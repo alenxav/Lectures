@@ -1,0 +1,121 @@
+---
+title: "Alencar Xavier"
+author: "Quantitative Genetics & Data Sciences"
+output: pdf_document
+geometry: margin=0.25in
+fontsize: 6pt
+---
+
++ E-mail: alenxav@gmail.com
++ Website: http://alenxav.wix.com/home
++ GitHub: https://github.com/alenxav/
++ Phone: 765-631-2572
+
+
+---
+
+> Self-motivated research scientist with expertise in the fields of agronomy, plant genetics and breeding, quantitative and statistical genetics, machine learning, phenomics and genomics. Adept in design, execution, and analysis of experiments, as well as analysis of observational studies. Proficient communicator with proven capacity to resolve problems within plant breeding-related and interdisciplinary team settings. Two years of industry experience as quantitative geneticist complemented by adjunct faculty position at Purdue University, which translated in instructing graduate courses, mentoring students and grant writing. Proactive character with personal values rooted on honesty and integrity. Leadership philosophy based on promoting collaborative environment, building trust and encouraging teamwork.
+
+---
+
+## EXPERIENCE
+
++ 2018 - Current: **Quantitative Geneticists**, Dpt of Biostatistics at Corteva Agrisciences.
++ 2017 - Current: **Quantitative Geneticists**, Adjunct Faculty in the Dpt of Agronomy, Purdue University.
++ 2016 - 2017: **Quantitative Geneticists**, Dow AgroSciences. Supv. by Mak Geha (mjgeha@dow.com).
++ 2013 - 2016: **RA Population Genetics**, Purdue University. Supv. by William Muir (bmuir@purdue.edu).
++ 2013 - 2016: **RA Soybean Breeding**, Purdue University. Supv. by Katy Rainey (krainey@purdue.edu).
++ 2012 (5 mo.): **Intern Small Grain Pathology**, UMN. Supv. by Ruth Dill-Macky (ruthdm@umn.edu).
++ 2011 (7 mo.): **Intern Sugar Beet Breeding**, KWS Betaseed. Supv. by Paloma Moe (pmoe@betaseed.com).
++ 2010 - 2011: **RA Potato Breeding**, UFSM, Brazil. Supv. by Dilson Bisognin (dilsonb@smail.ufsm.br).
++ 2009 - 2011: **RA Soil Physics**, UFSM, Brazil. Supv. by Jose Miguel Reichert (reichert.jm@gmail.com).
+
+## ACADEMICS
+
+1. **Academic Background**
+    + *Technical degree in agriculture and livestock* (2004-2006). E.E.T. Celeste Gobbato, RS, Brazil.
+    + *B.Sc. Agronomic Engineering* (2007-2011). Federal University of Santa Maria, RS, Brazil.
+    + *Ph.D. Soybean Breeding and Statistical Genetics* (2013-2016). Purdue University, IN, USA. *GPA 4*.
+
+2. **Awards and Recognitions**
+    + *Summer Institute of Statistical Genetics (SISG) Scholarship*, University of Washington. 2016.
+    + *John Axtell Graduate Student Award in Plant Breeding and Genetics*, Purdue University. 2016. 
+    + *ICQG5 Fellowship*. Support for graduate students in plant breeding. Sponsored by USDA. 2016.
+    + *Dow AgroSciences Graduate Scholarship*. Integrity, academic excellence, initiative and leadership, 2016.
+    + *Outstanding Graduate Research Award (PhD)*. Purdue 2015 Graduate Student Award.
+    + *Summer Institute in Statistics for Big Data (SISBID) Scholarship*, University of Washington. 2015.
+    + *AG Spotlight* - Graduate AG Research Spotlight. College of Agriculture, Purdue University. Feb 2015.
+    + *Bauman-Doolittle Endowment* - Support for graduate students in breeding and genetics. 2015.
+    + *Loyal F. Pete Bauman Memorial Fund* - Support for graduate students in breeding and genetics. 2014.
+    + *Wyman E. Nyquist Scholarship* - Quantitative Genetics. Purdue 2014 Graduate Student Award.
+    + *Soy2014 Student Award* - MCBS: 15th Biennial Conference. University of Minnesota, 2014.
+    + *Summer Institute of Statistical Genetics (SISG) Scholarship*, University of Washington. 2013.
+
+3. **Areas of Expertise**
+    + Plant genetics and breeding, field breeding techniques and selection theory;
+    + Phenomics and high-throughput technologies in plant breeding;
+    + Mixed models, machine learning and Bayesian methods;
+    + QTL mapping, Genome-wide association mapping, genome-wide prediction methods;
+    + Spatial statistics, adjustment of field variation and imputation methods;
+    + Computational breeding, algorithm development and high-performance computing;
+
+\newpage
+
+4. **Reviewer**
+    + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Field Crop Research (2018), Genetics (2016), G3: Genes|Genomes|Genetics (2016), iMedPub (2016), PLOS Computational Biology (2018), The Crop Journal (2018).
+    
+5. **Complimentary Background**
+    + Plant genetics and breeding, 4 cr. (2012). *MAST*. University of Minnesota.
+    + Plant disease resistance, 3 cr. (2012). *MAST*. University of Minnesota.
+    + Weed ecology and management, 3 cr. (2012). *MAST*. University of Minnesota.
+    + Mixed Models in Quantitative Genetics (2013). *SISG*. University of Washington.
+    + Markov chain Monte Carlo applied to Genetic Analysis (2013). *SISG*. University of Washington.
+    + Supervised Methods for Statistical Machine Learning (2015). *SISG*. University of Washington.
+    + Unsupervised Methods for Statistical Machine Learning (2015). *SISG*. University of Washington.
+    + Population Genetic Data Analysis (2016). *SISG*. University of Washington.
+    + Association Mapping: GWAS and Sequencing Data (2016). *SISG*. University of Washington.
+    
+6. **Computational**
+    + Advanced R programming and related tools (Markdown, Shiny, Rcpp);
+    + Broad background on C++, parallel computing and commercial software (SAS, ASReml, BLUPF90);
+    + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX;
+    + General bioinformatics applied to genomics and pipeline development.
+
+## PUBLICATIONS
+
+1. **Software**
+    + Xavier, A. et al. (2015). NAM: Nested Association Mapping. [LINK](https://CRAN.R-project.org/package=NAM)
+    + Xavier, A. et al. (2015). SoyNAM Dataset. [LINK](https://CRAN.R-project.org/package=SoyNAM)
+    + Xavier, A. et al. (2015). bWGR: Bayesian Whole-Genome Regression. [LINK](https://CRAN.R-project.org/package=bWGR)
+    + Xavier, A. et al. (2015). ClickNAM interactive GWAS. [LINK](https://xaviera.shinyapps.io/clickNAM).
+
+2. **Presentations (Speaker)**
+    + Xavier, A. Good learners, faster learning. *PAG*, 2019.
+    + Morota, G. and Xavier, A. Short course: Mixed Models in Plant Breedings. *UFV*, 2018.
+    + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UFV*, 2018.
+    + AGRY611, Quantitative Genetics (7 lectures), Purdue University, Fall 2017.
+    + AGRY620, Advanced Plant Breeding (3 lectures), Purdue University, Spring 2017.
+    + Xavier, A. Analytical Methods for Phenomics. *Purdue Phenomic Workshop*, 2017.
+    + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UNL*, 2016.
+    + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *Cornell*, 2016.
+    + Xavier, A. Learning from Data: GxE analysis on multiple population. *SBW*, 2016.
+    + AGRY301, Genetics (1 lecture), Purdue University, Summer 2016.
+    + Xavier, A. Learning from Data. Purdue. [LINK](https://www.youtube.com/watch?v=l9vlO8kmreI). 2015.
+    + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
+
+3. **Articles**
+    + Diers et al (2018). Genetic architecture of soybean yield and agronomic traits. G3. [LINK](http://www.g3journal.org/content/8/10/3367)
+    + Xavier et al (2018). Genomic properties of the USDA soybean germplasm collection. Plant Genetic Resources. [LINK](https://www.cambridge.org/core/journals/plant-genetic-resources/article/population-and-quantitative-genomic-properties-of-the-usda-soybean-germplasm-collection/EF1E973DE6B4D0A315716E0DE4A060A1) 
+    + Jarquin et al (2018). Modeling Interactions between environments, genotype and soybeans canopy. Agronomy. [LINK](http://www.mdpi.com/2073-4395/8/4/51)
+    + Xavier et al (2018). Genome-Wide Analysis of Grain Yield Stability in Soybeans. G3. [LINK](http://www.g3journal.org/content/8/2/519)
+    + Xavier et al (2017). Genetic Architecture of Phenomic-enabled Canopy Coverage in *Glycine max*. Genetics. [LINK](http://www.genetics.org/content/206/2/1081?etoc)
+    + Xavier et al (2017). Genomic Prediction using Subsampling. BMC Bioinformatics. [LINK](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1582-3).
+    + Xavier et al (2017). Unsupervised learning techniques to dissect associations of soybean traits. Euphytica. [LINK](https://link.springer.com/article/10.1007/s10681-017-1975-4).
+    + Xavier et al (2016). Walking through the Black Boxes of Statistical Plant Breeding. TAG. [LINK](http://link.springer.com/article/10.1007/s00122-016-2750-y).
+    + Xavier et al (2016). Assessment of Predictive Properties of Genome-wide Selection in Soybeans. G3. [LINK](http://www.g3journal.org/content/6/8/2611.long).
+    + Xavier et al (2016). Genetic variation captured by a SNP panel in soybean. BMC Informatics. [LINK](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4736474/)
+    + Xavier (2016). Learning from data: Plant breeding applications of machine learning. Purdue University. [LINK](https://docs.lib.purdue.edu/cgi/viewcontent.cgi?referer=https://www.google.com/&httpsredir=1&article=2076&context=open_access_dissertations)
+    + Xavier et al (2015). Association Studies in Multiple Populations. Bioinformatics. [LINK](http://bioinformatics.oxfordjournals.org/content/early/2015/08/03/bioinformatics.btv448.abstract).
+    + Kielse et al (2013). Vegetative Propagation of *Cordia trichotoma* from Root Cuttings. Arvore. [LINK](http://www.scielo.br/pdf/rarv/v37n1/v37n1a07.pdf). 
+    + Mentges et al (2013). Mechanical & structural changes of flooded soil with rice cultivation. R.Bras.Ci.Solo. [LINK](http://www.scielo.br/pdf/rbcs/v37n1/v37n1a23.pdf).
+    + Gubiani et al (2009). Soil fertility management using the software CADUB. Plantio Direto. [LINK](http://www.plantiodireto.com.br/?body=cont_int&id=952).
