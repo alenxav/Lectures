@@ -1,0 +1,378 @@
+---
+title: "Lecture 4 - Advanced topics"
+author: "Alencar Xavier, Gota Morota"
+date: "October 26, 2018"
+widescreen: true
+output: ioslides_presentation
+---
+
+## Outline
+
+- Multivariate models
+- Bayesian methods
+- Machine learning
+- G x E interactions
+
+## Multivariate models
+
+![](http://www.genetics.org/content/genetics/194/3/561/F1.large.jpg)
+
+## Multivariate models
+
+Mixed models also enable us to evaluate multiple traits:
+
+* More accurate parameters: BV and variance components
+* Information: Inform how traits relate to each other
+* Constrains: May increase computation time considerably
+
+It preserves the same formulation
+
+$$y = Xb+Zu+e$$
+However, we now stack the traits together:
+
+$y=\{y_1,y_2,...,y_k\}$, $X=\{X_1 | X_2 | ... | X_k\}'$, $b=\{b_1,b_2,...,b_k\}$, $Z=\{Z_1 | Z_2 | ... | Z_k\}'$, $u=\{u_1,u_2,...,u_k\}$, $e=\{e_1,e_2,...,e_k\}$.
+
+## Multivariate models
+
+The multivariate variance looks nice at first
+$$
+Var(y) = Var(u) + Var(e)
+$$
+
+But can get ugly with a closer look:
+
+$$
+Var(u) = Z ( G 	\otimes \Sigma_a ) Z' = 
+\left[\begin{array}{rr} Z_1'GZ_1\sigma^2_{a_1} & Z_1'GZ_2\sigma_{a_1a_2}
+\\ Z_2'GZ_1\sigma_{a_2a_1} & Z_2'GZ_2\sigma^2_{a_2} \end{array}\right] 
+$$
+
+and
+
+$$
+Var(e) = R	\otimes \Sigma_e = 
+\left[\begin{array}{rr} R\sigma^2_{e_1} & R\sigma_{e_1e_2}
+\\ R\sigma_{e_2e_1} & R\sigma^2_{e_2} \end{array}\right] 
+$$
+
+## Multivariate models
+
+You can still think the multivariate mixed model as
+
+$$y=Wg+e$$
+
+Where
+
+$$
+y = \left[\begin{array}{rr} y_1 \\ y_2 \end{array}\right],
+W = \left[\begin{array}{rr} X_1 & 0 & Z_1 & 0 \\ 0 & X_2 & 0 & Z_2 \\ \end{array}\right],
+g = \left[\begin{array}{rr} b_1 \\ b_2 \\ u_1 \\ u_2 \end{array}\right],
+e = \left[\begin{array}{rr} e_1 \\ e_2 \end{array}\right]
+$$
+
+## Multivariate models
+
+Left-hand side ($W'R^{-1}W+\Sigma$)
+$$ 
+\left[\begin{array}{rr}
+X_1'X_1\Sigma^{-1}_{e_{11}} & X_1'X_2\Sigma^{-1}_{e_{12}} & X_1'Z_1\Sigma^{-1}_{e_{11}} & X_1'Z_2\Sigma^{-1}_{e_{12}}\\
+X_2'X_1\Sigma^{-1}_{e_{12}} & X_2'X_2\Sigma^{-1}_{e_{22}} & X_2'Z_1\Sigma^{-1}_{e_{12}} & X_2'Z_2\Sigma^{-1}_{e_{22}}\\
+Z_1'X_1\Sigma^{-1}_{e_{11}} & Z_1'X_2\Sigma^{-1}_{e_{12}} & G^{-1}\Sigma^{-1}_{a_{11}} + Z_1'Z_1\Sigma^{-1}_{e_{11}} & G^{-1}\Sigma^{-1}_{a_{12}} + Z_1'Z_2\Sigma^{-1}_{e_{12}}\\
+Z_2'X_1\Sigma^{-1}_{e_{12}} & Z_2'X_2\Sigma^{-1}_{e_{22}} & G^{-1}\Sigma^{-1}_{a_{11}} + Z_2'Z_1\Sigma^{-1}_{e_{12}} & G^{-1}\Sigma^{-1}_{a_{22}} + Z_2'Z_2\Sigma^{-1}_{e_{22}}\\ 
+\end{array}\right]
+$$
+Right-hand side ($W'R^{-1}y$)
+$$
+\left[\begin{array}{rr}
+X_1'y\Sigma^{-1}_{e_1} \\
+X_2'y\Sigma^{-1}_{e_1e_2} \\
+Z_1'y\Sigma^{-1}_{e_1} \\
+Z_2'y\Sigma^{-1}_{e_1e_2} \\
+\end{array}\right]
+$$
+
+## Multivariate models
+
+```{r,echo=T,fig.width=8,fig.height=4,fig.align="center"}
+data(wheat, package = 'BGLR')
+G = NAM::GRM(wheat.X)
+Y = wheat.Y; colnames(Y) = c('E1','E2','E3','E4')
+mmm = NAM::reml( y = Y, K = G )
+knitr::kable( round(mmm$VC$GenCor,2) )
+```
+
+## Multivariate models
+
+```{r}
+mmm$VC$Vg
+mmm$VC$Ve
+```
+
+## Multivariate models
+
+- Selection indeces, co-heritability, indirect response to selection
+- Study residual and additive genetic association among traits
+
+```{r,fig.width=6,fig.height=4,fig.align="center"}
+biplot(princomp(mmm$VC$GenCor,cor=T),xlim=c(-.4,.4),ylim=c(-.11,.11))
+```
+
+
+## Bayesian methods
+
+![](https://www2.isye.gatech.edu/~brani/isyebayes/bank/bayesfun.jpg)
+
+## Bayesian methods
+
+The general framework on a hierarchical Bayesian model follows:
+
+$$p(\theta|x)\propto p(x|\theta) p(\theta)$$
+
+Where:
+
+* Posterior probability: $p(\theta|x)$
+* Likelihood: $p(x|\theta)$
+* Prior probability: $p(\theta)$
+
+## Bayesian methods
+
+For the model:
+
+$$y=Xb+Zu+e, \space\space\space u\sim N(0,K\sigma^2_a), \space e \sim N(0,I\sigma^2_e)$$
+
+* Data ($x=\{y,X,Z,K\}$)
+* Parameters ($\theta=\{b,u,\sigma^2_a,\sigma^2_e\}$)
+
+Probabilistic model:
+
+$$p(b,u,\sigma^2_a,\sigma^2_e|y,X,Z,K) \propto N(y,X,Z,K|b,u,\sigma^2_a,\sigma^2_e) \times \space\space\space\space\space\space\space\space\space\space
+\space\space\space\space\space\space\space\space\space\space\space\space
+\space\space\space\space\space\space\space\space\space\space\space\space\space\space
+\space\space\space\space\space\space\space\space\space\space\space\space
+\space\space\space\space\space\space\space\space\space\space\space\space\space\space\space\space
+\space\space\space\space\space\space \\ N(b, u|\sigma^2_a,\sigma^2_e) \times  \chi^{-2}(\sigma^2_a,\sigma^2_e|S_a,S_e,\nu_a,\nu_e)$$
+
+## Bayesian methods
+
+REML: the priors $(S_a,S_e,\nu_a,\nu_e)$ are estimated from data.
+
+Hierarchical Bayes: You provide priors. Here is how:
+
+$$\sigma^2_a=\frac {u'K^{-1}u+S_a\nu_a} {\chi^2(q+\nu_a)}$$
+
+`sigma2a=(t(u)%*%iK%*%u+Sa*dfa)/rchisq(df=ncol(Z)+dfa,n=1)`
+
+$$\sigma^2_e=\frac {e'e+S_e\nu_e} {\chi^2(n+\nu_e)}$$
+
+`sigma2e=(t(e)%*%e+Se*dfe)/rchisq(df=length(y)+dfe,n=1)`
+
+## Bayesian methods
+
+What does it mean for **you**? If your "prior knowledge" tells you that a given trait has approximately $h^2=0.5$ (nothing unreasonable). In which case, half of the phenotypic variance is due to genetics, and the other half is due to error. Your prior shape is:
+
+$$S_a = S_e= \sigma^2_y\times0.5$$
+
+We usually assign small a prior degrees of freeds. Samething like four or five prior degrees of freedom. That means that assuming $\nu_0=5$, you are yielding to your model 5 data points that support heritability 0.5 
+
+$$\nu_a=\nu_e=5$$
+
+Example of prior influence: In a dataset with 300 data points, 1.6% of the variance components information comes from prior (5/305), and 98.4% comes from data (300/305).
+
+
+## Bayesian methods
+
+For whole-genome regression models
+
+$$y=\mu+Ma+e, \space\space\space a\sim N(0,I\sigma^2_b), \space e\sim N(0,I\sigma^2_e)$$
+
+We scale the prior genetic variance based on allele frequencies
+
+$$ S_b = \frac{\sigma^2_y\times0.5}{2 \sum{p_j(1-p_j)} }$$
+
+Two common settings:
+
+* All markers, one random effect: *Bayesian ridge regression*
+* Each markers as a random effect: *BayesA*
+
+
+## Machine learning methods
+
+* Parametric methods for prediction: L1-L2
+* Semi-parametric methods for prediction: Kernels
+* Non-parametric methods for prediction: Trees and nets
+
+![](https://cdn-images-1.medium.com/max/1600/0*SbLLq8PDBbxkMO6X.png)
+
+## Machine learning methods
+
+L1-L2 machines include all mixed and Bayesian models we have seen so far. The basic framework is driven by a single (random) term model:
+
+$$y=Xb+e$$
+
+The univariate soltion indicates how the model is solved. A model without regularization yields the least square (LS) solution. If we regularize by deflating the nominator, we get the L1 regularization (LASSO). If we regularize by inflating the denominator, we get the L2 regularization (Ridge). For any combination of both, we get a elastic-net (EN). Thus:
+
+$$b_{LS}=\frac{x'y}{x'x}, \space\space b_{Lasso}=\frac{x'y-\lambda}{x'x}, \space\space b_{Ridge}=\frac{x'y}{x'x+\lambda}, \space\space b_{EN}=\frac{x'y-\lambda_1}{x'x+\lambda_2}$$
+
+Whereas the Bayesian and mixed model framework resolves the regularization as $\lambda=\sigma^2_e/\sigma^2_b$, ML methods search for $\lambda$ through (*k*-fold) cross-validation.
+
+## Machine learning methods
+
+Common loss functions in L1-L2 machines
+
+* LS (no prior, no shrinkage): $argmin( \sum{e_i^2} )$
+* L1 (Laplace prior with variable selection): $argmin( \sum{e_i^2} + \lambda\sum{|b_j|} )$
+* L2 (Gaussian prior, unique solution): $argmin( \sum{e_i^2} + \lambda\sum{b^2_j} )$
+
+Other losses that are less popular
+
+* Least absolute: $argmin( \sum{|e_i|} )$ based on $b_{LA}=\frac{MD(x\times y)}{x'x}$
+* $\epsilon$-loss: $argmin(\sum{e_i^2, |e_i|>\epsilon})$ - used in support vector machines
+
+## Machine learning methods
+
+Cross-validations to search for best value of lambda
+
+```{r,fig.width=7,fig.height=3,fig.align="center"}
+lasso = glmnet::cv.glmnet(x=wheat.X,y=rowMeans(Y),alpha=1);
+ridge = glmnet::cv.glmnet(x=wheat.X,y=rowMeans(Y),alpha=0);
+par(mfrow=c(1,2)); plot(ridge); plot(lasso)
+```
+
+## Machine learning methods
+
+Re-fit the model using this best value
+
+```{r,fig.width=7,fig.height=3,fig.align="center"}
+lasso = glmnet::glmnet(x=wheat.X,y=rowMeans(Y),lambda=lasso$lambda.min,alpha=1)
+ridge = glmnet::glmnet(x=wheat.X,y=rowMeans(Y),lambda=ridge$lambda.min,alpha=0)
+par(mfrow=c(1,2)); plot(lasso$beta,main='LASSO'); plot(ridge$beta,main='RIDGE');
+```
+
+## Machine learning methods
+
+Of course, the losses presented above are not limited to the application of prediction and classification. Below, we see an example of deploying LASSO for a graphical model (Markov Random Field): How the traits of the multivariate model relate in terms of additive genetics:
+
+```{r,fig.width=6,fig.height=3,fig.align="center"}
+ADJ=huge::huge(mmm$VC$GenCor,.3,method='glasso',verbose=F)$path[[1]]
+plot(igraph::graph.adjacency(adjmatrix=ADJ),vertex.label.cex=3)
+```
+
+## Machine learning methods
+
+Reproducing kernel Hilbert Spaces (RKHS), is a generalization of a GBLUP... Most commonly instead of using the linear kernel ($ZZ'\alpha$), RKHS commonly uses one or more Gaussian or exponential kernels:
+
+$$K=\exp(-\theta D^2)$$
+
+Where $D^2$ is the squared Euclidean distance, and $\theta$ is a bandwidth:
+
+* Single kernel: $1/mean(D^2)$
+* Three kernels: $\theta$={5/q, 1/q, 0.2/q}, where `q=quantile(D2,0.05)`
+
+## Machine learning methods
+
+We can use REML, PRESS (=cross-validation) or Bayesian approach to solve RKHS
+
+```{r,fig.width=3,fig.height=3,fig.align="center"}
+# Make the kernel
+D2 = as.matrix(dist(wheat.X)^2)
+K = exp(-D2/mean(D2))
+
+# Below we are going to calibrate models on Env 2 and predict Env 3
+rkhs_press = NAM::press(y=Y[,2],K=K)$hat
+rkhs_reml = NAM::reml(y=Y[,2],K=K)$EBV
+rkhs_bgs = NAM::gibbs(y=Y[,2],iK=solve(K))$Fit.mean
+```
+
+## Machine learning methods
+
+```{r,fig.width=8,fig.height=3,fig.align="center"}
+par(mfrow=c(1,3))
+plot(rkhs_press,Y[,3],main=paste('PRESS, cor =',round(cor(rkhs_press,Y[,3]),4) ))
+plot(rkhs_reml,Y[,3],main=paste('REML, cor =',round(cor(rkhs_reml,Y[,3]),4) ))
+plot(rkhs_bgs,Y[,3],main=paste('Bayes, cor =',round(cor(rkhs_bgs,Y[,3]),4) ))
+```
+
+## Machine learning methods
+
+RKHS for epistasis and variance component analysis
+
+```{r,fig.width=3.5,fig.height=3.5,fig.align="center"}
+Ks = NAM::G2A_Kernels(wheat.X) # Get all sorts of linear kernels
+FIT = BGLR::BGLR(rowMeans(Y),verbose=FALSE,
+      ETA=list(A=list(K=Ks$A,model='RKHS'),AA=list(K=Ks$A,model='RKHS')))
+pie(c(Va=FIT$ETA$A$varU,Vaa=FIT$ETA$AA$varU,Ve=FIT$varE),main='Epistasis')
+```
+
+## Machine learning methods
+
+For the same task (E2 predict E3), let's check members of the Bayesian alphabet
+
+```{r}
+fit_BRR = bWGR::wgr(Y[,2],wheat.X); cor(c(fit_BRR$hat),Y[,3])
+fit_BayesB = bWGR::BayesB(Y[,2],wheat.X); cor(fit_BayesB$hat,Y[,3])
+fit_emBayesA = bWGR::emBA(Y[,2],wheat.X); cor(fit_emBayesA$hat,Y[,3])
+```
+
+## Machine learning methods
+
+Tree regression and classifiers
+
+![](https://s3.ap-south-1.amazonaws.com/techleer/113.png)
+
+## Machine learning methods
+
+```{r,fig.width=7,fig.height=3.5,fig.align="center"}
+fit_tree = party::ctree(y~.,data.frame(y=Y[,2],wheat.X)); plot(fit_tree)
+cor(c(fit_tree@predict_response()),Y[,3])
+```
+
+## Machine learning methods
+
+```{r,fig.width=3,fig.height=3,fig.align="center"}
+fit_rf = ranger::ranger(y~.,data.frame(y=Y[,2],wheat.X))
+plot(fit_rf$predictions,Y[,3],xlab='RF predictions from E2',ylab='Yield E3',pch=20)
+cor(fit_rf$predictions,Y[,3])
+```
+
+## Genotype-Environmnet interactions
+
+![](https://epi.grants.cancer.gov/i/hands_holding_two_puzzle_pieces.jpg)
+
+## Genotype-Environmnet interactions
+
+```{r}
+y=as.vector(wheat.Y); Z=wheat.X; Zge=as.matrix(Matrix::bdiag(Z,Z,Z,Z))
+#
+fit_g = bWGR::BayesRR(rowMeans(wheat.Y),Z)
+fit_ge = bWGR::BayesRR(y,Zge)
+fit_gge = bWGR::BayesRR2(y,rbind(Z,Z,Z,Z),Zge)
+#
+fit_g$h2
+fit_ge$h2
+fit_gge$h2
+```
+
+## Genotype-Environmnet interactions
+
+```{r,echo=FALSE,fig.width=8,fig.height=4,fig.align="center"}
+require(Matrix,quietly = TRUE)
+image(bdiag(Z[1:30,1:70],Z[1:30,1:70],Z[1:30,1:70],Z[1:30,1:70]),main="GxE design matrix: Example of 4 environments, 30 individuals, 70 SNPs")
+```
+
+## Genotype-Environmnet interactions
+
+```{r,fig.width=4,fig.height=4,fig.align="center"}
+GE1=matrix(fit_ge$hat,ncol=4); GE2=matrix(fit_ge$hat,ncol=4)
+plot(data.frame(G=fit_g$hat,GE=rowMeans(GE1),G_and_GE=rowMeans(GE2)),main='GEBV across E')
+```
+
+## Genotype-Environmnet interactions
+
+```{r,fig.width=8,fig.height=3.5,fig.align="center"}
+par(mfrow=c(1,3))
+plot(fit_g$hat,rowMeans(Y),main=round(cor(fit_g$hat,rowMeans(Y)),4),xlab='G model',ylab='Observed',pch=20)
+plot(c(GE1),y,main=round(cor(c(GE1),y),4),xlab='GE model',ylab='Observed',pch=20)
+plot(c(GE2),y,main=round(cor(c(GE2),y),4),xlab='G+GE model',ylab='Observed',pch=20)
+```
+
+# Thanks!
