@@ -1,9 +1,11 @@
 ---
-title: "Lab 1 - DYI fitting MLM"
+title: "Lab 1 - DIY fitting MLM"
 author: "Alencar Xavier, Gota Morota"
 date: "October 26, 2018"
-widescreen: true
-output: ioslides_presentation
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+widescreen: yes
 ---
 
 # Example 1 - Sorghum
