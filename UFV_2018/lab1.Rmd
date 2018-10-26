@@ -1,0 +1,356 @@
+---
+title: "Lab 1 - DIY fitting MLM"
+author: "Alencar Xavier, Gota Morota"
+date: "October 26, 2018"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+widescreen: yes
+---
+
+# Example 1 - Sorghum
+
+## Example 1 - load data
+
+Example dataset from Kevin's *agridat* package
+
+```{r}
+data(adugna.sorghum, package = 'agridat')
+dt = adugna.sorghum
+head(dt)
+```
+
+## Example 1 - Getting design matrix
+
+- Linear model: $Pheotype = Env + Gen$
+- In algebra notation: $y = Xb + Zu + e$
+
+```{r}
+y = dt$yield
+X = model.matrix(y~env,dt)
+Z = model.matrix(y~gen-1,dt) # "-1" means no intercept
+```
+
+Assuming:
+
+- $u\sim N(0,I\sigma^2_g)$
+- $e\sim N(0,I\sigma^2_e)$
+
+## Example 1 - Visualize X and Z matrices
+
+```{r,echo=T,fig.width=8,fig.height=4,fig.align="center"}
+SEE=function(A,...)image(t(1-A[nrow(A):1,]),axes=F,col=gray.colors(2),...)
+par(mfrow=c(1,2),mar=c(1,1,3,1))
+SEE(X, main=paste("X matrix (",paste(dim(X),collapse=' x '),")" ))
+SEE(Z, main=paste("Z matrix (",paste(dim(Z),collapse=' x '),")" ))
+```
+
+## Example 1 - Fit the model
+
+```{r}
+# Using the NAM package (same for rrBLUP, EMMREML, BGLR)
+require(NAM, quietly = TRUE)
+fit1 = reml(y=y,X=X,Z=Z)
+
+# Alternatively, you can also use formulas with NAM
+fit1b = reml(y=dt$yield,X=~dt$env,Z=~dt$gen )
+
+# Using the lme4 package
+require(lme4, quietly = TRUE)
+fit2 = lmer(yield ~ env + (1|gen), data=dt)
+```
+
+## Example 1 - Variance components
+
+```{r}
+fit1$VC[c(1:2)] # same with fit1b$VC
+data.frame((summary(fit2))$varcor)$vcov
+```
+
+- VC can be used to measure *broad-sense* heritability
+
+$H=\frac{\sigma^2_g}{\sigma^2_g+\sigma^2_e/n}=\frac{189680.4}{189680.4+442075.6/10.32}=0.82$
+
+## Example 1 - The coefficients
+
+```{r,fig.width=8,fig.height=4,fig.align="center"}
+blue1 = fit1$Fixed[,1];  blup1 = fit1$EBV
+blue2 = fit2@beta;       blup2 = rowMeans(ranef(fit2)$gen)
+par(mfrow=c(1,2));
+plot(blue1,blue2,main="BLUE"); plot(blup1,blup2,main="BLUP")
+```
+
+## Example 1 - DIY BLUPs
+
+```{r}
+iK = diag(ncol(Z))
+Lambda = 442075.6/189680.4
+W = cbind(X,Z)
+Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
+LHS = crossprod(W) + Sigma
+RHS = crossprod(W,y)
+g = solve(LHS,RHS)
+my_blue = g[ c(1:ncol(X))]
+my_blup = g[-c(1:ncol(X))]
+```
+
+## Example 1 - DIY BLUPs
+
+```{r,fig.width=8,fig.height=4,fig.align="center"}
+par(mfrow=c(1,2))
+plot(my_blue,blue1,main="BLUE")
+plot(my_blup,blup1,main="BLUP")
+```
+
+## Example 1 - DIY Variance components
+
+$\sigma^{2}_{e} = \frac{e'y}{n-p}$ and $\sigma^{2}_{u} = \frac{u'K^{-1}u+tr(K^{-1}C^{22}\sigma^{2}_{e})}{q}$
+
+```{r}
+e = y - X %*% my_blue - Z %*% my_blup
+Ve = c(y%*%e)/(length(y)-ncol(X))
+Ve
+trKC22 = sum(diag(iK%*%(solve(LHS)[-c(1:ncol(X)),-c(1:ncol(X))])))
+Vg = Vg = c(t(my_blup)%*%iK%*%my_blup+trKC22*Ve)/ncol(Z)
+Vg
+```
+
+
+## Starting from bad variance components
+
+```{r}
+Ve = Vg = 1
+for(i in 1:25){
+  Lambda = Ve/Vg; 
+  Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
+  LHS = crossprod(W) + Sigma; RHS = crossprod(W,y); g = solve(LHS,RHS)
+  my_blue = g[ c(1:ncol(X))]; my_blup = g[-c(1:ncol(X))]
+  e = y - X%*%my_blue - Z%*%my_blup; Ve = c(y%*%e)/(length(y)-ncol(X))
+  trKC22 = sum(diag(iK%*%(solve(LHS)[(ncol(X)+1):(ncol(W)),(ncol(X)+1):(ncol(W))])))
+  Vg = c(t(my_blup)%*%iK%*%my_blup+trKC22*Ve)/ncol(Z)
+  if(!i%%5){cat('It',i,'VC:  Vg =',Vg,'and Ve =',Ve,'\n')}}
+```
+
+# Example 2 - Barley
+
+## Example 2 - load data
+
+Another example dataset from Kevin's *agridat* package
+
+```{r}
+data(steptoe.morex.pheno,package='agridat')
+dt = steptoe.morex.pheno
+head(dt)
+```
+
+## Example 2 - Getting design matrix
+
+- Linear model: $Phe=Env+Gen$
+
+- In algebra notation: $y=Xb+Zu+e$  
+
+```{r}
+X = model.matrix(~env,dt)
+Z = model.matrix(~gen-1,dt) # "-1" means no intercept
+y = dt$yield
+```
+
+## Example 2 - Fit the model
+
+```{r}
+# Fit
+fit0 = reml(y=y,X=X,Z=Z)
+
+# BLUE and BLUP
+blue0 = fit0$Fixed[,1]
+blup0 = fit0$EBV
+
+# Get VC
+fit0$VC[c(1:2)]
+```
+
+## Example 2 - DIY BLUPs
+
+```{r}
+iK = diag(ncol(Z))
+Lambda = 0.637997/0.132009
+W = cbind(X,Z)
+Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
+LHS = crossprod(W) + Sigma
+RHS = crossprod(W,y)
+g = solve(LHS,RHS)
+my_blue = g[ c(1:ncol(X))]
+my_blup = g[-c(1:ncol(X))]
+```
+
+## Example 2 - DIY BLUPs
+
+```{r,fig.width=8,fig.height=4,fig.align="center"}
+par(mfrow=c(1,2))
+plot(my_blue,blue0,main="BLUE")
+plot(my_blup,blup0,main="BLUP")
+```
+
+## Example 2 - Check variance components
+
+$\sigma^{2}_{e} = \frac{e'y}{n-p}$ and $\sigma^{2}_{u} = \frac{u'K^{-1}u+tr(K^{-1}C^{22}\sigma^{2}_{e})}{q}$
+
+```{r}
+e = y - X %*% my_blue - Z %*% my_blup
+Ve = c(y%*%e)/(length(y)-ncol(X))
+Ve
+trKC22 = sum(diag(iK%*%(solve(LHS)[-c(1:ncol(X)),-c(1:ncol(X))])))
+Vg = c(t(my_blup)%*%iK%*%my_blup+trKC22*Ve)/ncol(Z)
+Vg
+```
+
+## Starting from bad variance components
+
+```{r}
+Ve = Vg = 1
+for(i in 1:25){
+  Lambda = Ve/Vg; 
+  Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
+  LHS = crossprod(W) + Sigma; RHS = crossprod(W,y); g = solve(LHS,RHS)
+  my_blue = g[ c(1:ncol(X))]; my_blup = g[-c(1:ncol(X))]
+  e = y - X%*%my_blue - Z%*%my_blup; Ve = c(y%*%e)/(length(y)-ncol(X))
+  trKC22 = sum(diag(iK%*%(solve(LHS)[(ncol(X)+1):(ncol(W)),(ncol(X)+1):(ncol(W))])))
+  Vg = c(t(my_blup)%*%iK%*%my_blup+trKC22*Ve)/ncol(Z)
+  if(!i%%5){cat('It',i,'VC:  Vg =',Vg,'and Ve =',Ve,'\n')}}
+```
+
+# Example 3 - Barley GEBV
+
+## Using genomic information!
+
+```{r}
+data(steptoe.morex.geno,package='agridat')
+gen = do.call("cbind",lapply(steptoe.morex.geno$geno,function(x) x$data))
+gen = rbind(0,2,gen)
+rownames(gen) = c('Morex','Steptoe',as.character(steptoe.morex.geno$pheno$gen))
+rownames(gen)[10] = "SM8"
+gen = gen[gsub('gen','',colnames(Z)),]
+K = G2A_Kernels(gen)$A
+```
+
+## Example 3 - Fit the model
+
+```{r}
+# Fit model
+fit0 = reml(y=y,X=X,Z=Z,K=K)
+
+# BLUE and BLUP
+blue0 = fit0$Fixed[,1]
+gebv0 = fit0$EBV
+
+# Get VC
+fit0$VC[c(1:2)]
+```
+
+## Example 3 - DIY BLUPs
+
+```{r}
+iK = chol2inv(K)
+Lambda = 0.6575786/0.2334026
+W = cbind(X,Z)
+Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
+LHS = crossprod(W) + Sigma
+RHS = crossprod(W,y)
+g = solve(LHS,RHS)
+my_blue = g[ c(1:ncol(X))]
+my_gebv = g[-c(1:ncol(X))]
+```
+
+## Example 3 - DIY BLUPs
+
+```{r,fig.width=8,fig.height=4,fig.align="center"}
+par(mfrow=c(1,2))
+plot(my_blue,blue0,main="BLUE")
+plot(my_gebv,gebv0,main="GEBV")
+```
+
+## Example 3 - Check variance components
+
+$\sigma^{2}_{e} = \frac{e'y}{n-p}$ and $\sigma^{2}_{u} = \frac{u'K^{-1}u+tr(K^{-1}C^{22}\sigma^{2}_{e})}{q}$
+
+```{r}
+e = y - X %*% my_blue - Z %*% my_blup
+Ve = c(y%*%e)/(length(y)-ncol(X))
+Ve
+trKC22 = sum(diag(iK%*%(solve(LHS)[(ncol(X)+1):(ncol(W)),(ncol(X)+1):(ncol(W))])))
+Vg = c(t(my_blup)%*%iK%*%my_blup+trKC22*Ve)/ncol(Z)
+Vg
+```
+
+# Example 4 - Soybeans
+
+## snp-BLUP
+
+```{r}
+data(tpod,package='NAM')
+X = matrix(1,length(y),1)
+Z = gen
+dim(Z)
+```
+
+## Example 3 - Fit the model
+
+```{r,fig.width=8,fig.height=3.5,fig.align="center"}
+# Fit using the lme4 package
+fit0 = reml(y=y,X=X,Z=Z) # same as reml(y=y,Z=gen) 
+marker_values = fit0$EBV
+gebv0 = c(gen %*% marker_values)
+# Marker effects
+plot(marker_values,pch=16, xlab='SNP')
+```
+
+## Example 3 - DIY BLUPs
+
+```{r}
+iK = diag(ncol(Z))
+Lambda = fit0$VC[2] / fit0$VC[1]
+W = cbind(X,Z)
+Sigma = diag( c(0,rep(Lambda,ncol(Z))) )
+LHS = crossprod(W) + Sigma
+RHS = crossprod(W,y)
+g = solve(LHS,RHS)
+my_mu = g[ c(1:ncol(X))]
+my_marker_values = g[-c(1:ncol(X))]
+my_gebv = c(gen %*% my_marker_values) # GEBVs from RR
+```
+
+## Example 3 - DIY BLUPs
+
+```{r,fig.width=8,fig.height=4,fig.align="center"}
+par(mfrow=c(1,2))
+plot(my_marker_values, marker_values, main="Markers")
+plot(my_gebv, gebv0, main="GEBV")
+```
+
+## Example 3 - Heritability from RR
+
+```{r,fig.width=4,fig.height=4,fig.align="center"}
+fit0$VC
+
+Scale=sum(apply(gen,2,var)); Va=fit0$VC[1]*Scale;  Ve=fit0$VC[2]
+round((Va/(Va+Ve)),2)
+
+K = tcrossprod(apply(gen,2,function(x) x-mean(X)))
+K = K/mean(diag(K)); round(reml(y,K=K)$VC,2)
+```
+
+## Estimate VC from bad starters
+
+```{r}
+W = cbind(X,Z); iK = diag(ncol(Z))
+Ve = Vg = 1 # Bad starting values
+for(i in 1:100){ # Check the VC convergence after few iterations
+  Lambda = Ve/Vg; 
+  Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
+  LHS = crossprod(W) + Sigma; RHS = crossprod(W,y); g = solve(LHS,RHS)
+  my_blue = g[ c(1:ncol(X))]; my_blup = g[-c(1:ncol(X))]
+  e = y - X%*%my_blue - Z%*%my_blup; Ve = c(y%*%e)/(length(y)-ncol(X))
+  trKC22 = sum(diag(iK%*%(solve(LHS)[(ncol(X)+1):(ncol(W)),(ncol(X)+1):(ncol(W))])))
+  Vg = c(t(my_blup)%*%iK%*%my_blup+trKC22*Ve)/ncol(Z)
+  if(!i%%25){cat('It',i,'VC:  Vg =',Vg,'and Ve =',Ve,'\n')}}
+```
