@@ -102,8 +102,8 @@ curve( 4*x*(1-x), ylim=c(0,.6),col=4,lwd=2, add=T)
 #
 legend('topright',legend=c('HW (2pq)','Inbred (4pq)'),col=c(2,4),lty=1,lwd=2,bty='n')
 #
-text(0.5,0.55,'Unselected DH / RIL',col=2)
-text(0.5,1.05,'Unselected F2',col=4)
+text(0.5,0.55,'Unselected F2',col=2)
+text(0.5,1.05,'Unselected DH / RIL',col=4)
 lines(x=c(.5,.5),y=c(.5,1),col=c(2,4),pch=20,lwd=5,type='p')
 #
 arrows(x0=.5,x1=.5,y0=0,y1=.2,code = 1)
