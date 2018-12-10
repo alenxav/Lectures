@@ -62,7 +62,7 @@ fontsize: 6pt
 \newpage
 
 4. **Reviewer**
-    + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genetics (2016), G3: Genes|Genomes|Genetics (2016), iMedPub (2016), PLOS Computational Biology (2018), The Crop Journal (2018).
+    + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genetics (2016), G3: Genes|Genomes|Genetics (2016), iMedPub (2016), Journal of Animal Breeding and Genetics (2018), PLOS Computational Biology (2018), The Crop Journal (2018).
     
 5. **Complimentary Background**
     + Plant genetics and breeding, 4 cr. (2012). *MAST*. University of Minnesota.
@@ -91,7 +91,7 @@ fontsize: 6pt
 
 2. **Presentations (Speaker)**
     + Xavier, A. Good learners, faster learning. *PAG*, 2019.
-    + Morota, G. and Xavier, A. Short course in mixed models. *UFV*, 2018.
+    + Xavier, A. and Morota, G. Short course in mixed models. *UFV*, 2018.
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UFV*, 2018.
     + AGRY611, Quantitative Genetics (7 lectures), Purdue University, Fall 2017.
     + AGRY620, Advanced Plant Breeding (3 lectures), Purdue University, Spring 2017.
