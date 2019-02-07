@@ -2,8 +2,10 @@
 title: "Lecture 4 - Advanced topics"
 author: "Alencar Xavier, Gota Morota"
 date: "October 26, 2018"
-widescreen: true
-output: ioslides_presentation
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+widescreen: yes
 ---
 
 ## Outline
@@ -30,7 +32,7 @@ It preserves the same formulation
 $$y = Xb+Zu+e$$
 However, we now stack the traits together:
 
-$y=\{y_1,y_2,...,y_k\}$, $X=\{X_1 | X_2 | ... | X_k\}'$, $b=\{b_1,b_2,...,b_k\}$, $Z=\{Z_1 | Z_2 | ... | Z_k\}'$, $u=\{u_1,u_2,...,u_k\}$, $e=\{e_1,e_2,...,e_k\}$.
+$y=\{y_1,y_2,...,y_k\}$, $X=\{X_1, X_2, ... , X_k\}'$, $b=\{b_1,b_2,...,b_k\}$, $Z=\{Z_1, Z_2, ... , Z_k\}'$, $u=\{u_1,u_2,...,u_k\}$, $e=\{e_1,e_2,...,e_k\}$.
 
 ## Multivariate models
 
@@ -43,8 +45,8 @@ But can get ugly with a closer look:
 
 $$
 Var(u) = Z ( G 	\otimes \Sigma_a ) Z' = 
-\left[\begin{array}{rr} Z_1'GZ_1\sigma^2_{a_1} & Z_1'GZ_2\sigma_{a_1a_2}
-\\ Z_2'GZ_1\sigma_{a_2a_1} & Z_2'GZ_2\sigma^2_{a_2} \end{array}\right] 
+\left[\begin{array}{rr} Z_1 G Z_1'\sigma^2_{a_1} & Z_1 G Z_2'\sigma_{a_{12}}
+\\ Z_2 G Z_1' \sigma_{a_{21}} & Z_2 G Z_2'\sigma^2_{a_2} \end{array}\right] 
 $$
 
 and
