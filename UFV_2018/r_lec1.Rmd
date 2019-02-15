@@ -85,7 +85,7 @@ Part 2: Applications
 
 ## Let's unleash the beast
 
-![](https://prod-discovery.edx-cdn.org/media/course/image/83fe6f4d-2509-4d94-a10a-649882b582d5-31ab5a97c20a.small.jpg)
+![](https://raw.githubusercontent.com/alenxav/miscellaneous/master/unleash.jpg)
 
 ## Model notation
 
