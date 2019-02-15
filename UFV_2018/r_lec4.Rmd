@@ -86,10 +86,10 @@ $$
 Right-hand side ($W'R^{-1}y$)
 $$
 \left[\begin{array}{rr}
-X_1'y\Sigma^{-1}_{e_1} \\
-X_2'y\Sigma^{-1}_{e_1e_2} \\
-Z_1'y\Sigma^{-1}_{e_1} \\
-Z_2'y\Sigma^{-1}_{e_1e_2} \\
+X_1'(y_1\Sigma^{-1}_{e_1}+y_2\Sigma^{-1}_{e_12}) \\
+X_2'(y_1\Sigma^{-1}_{e_22}+y_2\Sigma^{-1}_{e_12}) \\
+Z_1'(y_1\Sigma^{-1}_{e_12}+y_2\Sigma^{-1}_{e_1}) \\
+Z_2'(y_1\Sigma^{-1}_{e_12}+y_2\Sigma^{-1}_{e_12}) \\
 \end{array}\right]
 $$
 
