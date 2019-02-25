@@ -1,4 +1,6 @@
 
+# AIREMLF90 available at http://nce.ads.uga.edu/html/projects/programs/
+
 # Function to create inputs for remlf90
 # gen: numeric matrix with row names as ID - coded as 012
 # data: data.frame with a column called ID
@@ -85,6 +87,7 @@ EFFECTS: POSITIONS_IN_DATAFILE NUMBER_OF_LEVELS TYPE_OF_EFFECT [EFFECT NESTED]')
   u = 
 'OPTION SNP_file geno
 OPTION use_yams
+OPTION EM-REML 10
 OPTION approx_loglike
 OPTION maxrounds 20'
   para = c(para,u)
