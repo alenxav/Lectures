@@ -604,7 +604,7 @@ par(mfrow=c(1,2));
 plot(blue1,blue2,main="BLUE"); plot(blup1,blup2,main="BLUP")
 ```
 
-## Example 1 - DYI BLUPs
+## Example 1 - DIY BLUPs
 
 ```{r,echo=TRUE}
 iK = diag(ncol(Z))
@@ -618,7 +618,7 @@ my_blue = g[ c(1:ncol(X))]
 my_blup = g[-c(1:ncol(X))]
 ```
 
-## Example 1 - DYI BLUPs
+## Example 1 - DIY BLUPs
 
 ```{r,echo=TRUE,fig.width=8,fig.height=4,fig.align="center"}
 par(mfrow=c(1,2))
@@ -626,7 +626,7 @@ plot(my_blue,blue1,main="BLUE")
 plot(my_blup,blup1,main="BLUP")
 ```
 
-## Example 1 - DYI Variance components
+## Example 1 - DIY Variance components
 
 $\sigma^{2}_{e} = \frac{e'y}{n-p}$ and $\sigma^{2}_{u} = \frac{u'K^{-1}u+tr(K^{-1}C^{22}\sigma^{2}_{e})}{q}$
 
@@ -693,7 +693,7 @@ blup0 = fit0$EBV
 fit0$VC[c(1:2)]
 ```
 
-## Example 2 - DYI BLUPs
+## Example 2 - DIY BLUPs
 
 ```{r,echo=TRUE}
 iK = diag(ncol(Z))
@@ -707,7 +707,7 @@ my_blue = g[ c(1:ncol(X))]
 my_blup = g[-c(1:ncol(X))]
 ```
 
-## Example 2 - DYI BLUPs
+## Example 2 - DIY BLUPs
 
 ```{r,echo=TRUE,fig.width=8,fig.height=4,fig.align="center"}
 par(mfrow=c(1,2))
@@ -771,11 +771,11 @@ gebv0 = fit0$EBV
 fit0$VC[c(1:2)]
 ```
 
-## Example 3 - DYI BLUPs
+## Example 3 - DIY BLUPs
 
 ```{r,echo=TRUE}
-diag(K)=diag(K)+0.01; iK = solve(K)
-Lambda = 0.6575786/0.2334026
+diag(K) = diag(K)+1e-08; iK = solve(K)
+Lambda = 0.6575/1.0280
 W = cbind(X,Z)
 Sigma = as.matrix(Matrix::bdiag(diag(0,ncol(X)),iK*Lambda))
 LHS = crossprod(W) + Sigma
@@ -785,7 +785,7 @@ my_blue = g[ c(1:ncol(X))]
 my_gebv = g[-c(1:ncol(X))]
 ```
 
-## Example 3 - DYI BLUPs
+## Example 3 - DIY BLUPs
 
 ```{r,echo=TRUE,fig.width=8,fig.height=4,fig.align="center"}
 par(mfrow=c(1,2))
@@ -828,7 +828,7 @@ gebv0 = c(gen %*% marker_values)
 plot(marker_values,pch=16, xlab='SNP')
 ```
 
-## Example 3 - DYI BLUPs
+## Example 3 - DIY BLUPs
 
 ```{r,echo=TRUE}
 iK = diag(ncol(Z))
@@ -843,7 +843,7 @@ my_marker_values = g[-c(1:ncol(X))]
 my_gebv = c(gen %*% my_marker_values) # GEBVs from RR
 ```
 
-## Example 3 - DYI BLUPs
+## Example 3 - DIY BLUPs
 
 ```{r,echo=TRUE,fig.width=8,fig.height=4,fig.align="center"}
 par(mfrow=c(1,2))
@@ -1114,7 +1114,7 @@ Common loss functions in L1-L2 machines
 
 Other losses that are less popular
 
-* Least absolute: $argmin( \sum{|e_i|} )$ based on $b_{LA}=\frac{MD(x\times y)}{x'x}$
+* Least absolute: $argmin( \sum{|e_i|} )$ based on $b_{LA}=\frac{ n MD(x\times y)}{x'x}$
 * $\epsilon$-loss: $argmin(\sum{e_i^2, |e_i|>\epsilon})$ - used in support vector machines
 
 ## Machine learning methods
@@ -1610,7 +1610,7 @@ LRT = -2*(full_model$loglik - reduced_model$loglik)
 
 ## Whole genome screening
 
-## DYI (example with GLM)
+## DIY (example with GLM)
 
 ```{r,echo=TRUE,fig.width=8,fig.height=3.5,fig.align="center"}
 reduced_model = lm( y ~ Clst )
