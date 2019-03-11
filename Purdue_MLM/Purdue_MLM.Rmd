@@ -121,7 +121,7 @@ Summary:
 
 - **y** = vector of observations (*n*)
 - **X** = design matrix of fixed effects (*n* x *p*)
-- **Z** = design (or incidence) matrix of random effects (*n* x *p*)
+- **Z** = design (or incidence) matrix of random effects (*n* x *q*)
 - **K** = random effect correlation matrix (*q* x *q*)
 - **u** = vector of random effect coefficients (*q*)
 - **b** = vector of fixed effect coefficients (*p*)
@@ -1223,7 +1223,7 @@ plot(fit_rf$predictions,Y[,3],xlab='RF predictions from E2',ylab='Yield E3',pch=
 cor(fit_rf$predictions,Y[,3])
 ```
 
-## Genotype-Environmnet interactions
+## Genotype-Environment interactions
 
 ![](https://epi.grants.cancer.gov/i/hands_holding_two_puzzle_pieces.jpg)
 
