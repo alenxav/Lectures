@@ -1667,7 +1667,7 @@ qqman::qq(nam_pval,main='RLM')
 
 ## Baseline - No correction
 
-Base significance threshold: $\alpha=0.05/m$
+Base significance threshold: $\alpha=0.05$
 
 ```{r,echo=TRUE,fig.width=8,fig.height=4,fig.align="center"}
 plot(fit_gwa, alpha=0.05, main = "No correction")
@@ -1745,7 +1745,7 @@ plot(fit_rf$variable.importance,ylab='Importance',main='Random Forest',col=COL+7
 
 Thanks!
 
-+ e-mail: xaviera@purdue.edu or 
++ e-mail: xaviera@purdue.edu or alencar.xavier@corteva.com
 + other resources: https://alenxav.wixsite.com/home
 + material: https://github.com/alenxav/Lectures/tree/master/Purdue_MLM
 
