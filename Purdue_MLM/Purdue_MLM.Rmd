@@ -575,10 +575,8 @@ SEE(Z, main=paste("Z matrix (",paste(dim(Z),collapse=' x '),")" ))
 # Using the NAM package (same for rrBLUP, EMMREML, BGLR)
 require(NAM, quietly = TRUE)
 fit1 = reml(y=y,X=X,Z=Z)
-
 # Alternatively, you can also use formulas with NAM
 fit1b = reml(y=dt$yield,X=~dt$env,Z=~dt$gen )
-
 # Using the lme4 package
 require(lme4, quietly = TRUE)
 fit2 = lmer(yield ~ env + (1|gen), data=dt)
@@ -684,11 +682,9 @@ y = dt$yield
 ```{r,echo=TRUE}
 # Fit
 fit0 = reml(y=y,X=X,Z=Z)
-
 # BLUE and BLUP
 blue0 = fit0$Fixed[,1]
 blup0 = fit0$EBV
-
 # Get VC
 fit0$VC[c(1:2)]
 ```
@@ -762,11 +758,9 @@ K = GRM(IMP(gen),T)
 ```{r,echo=TRUE}
 # Fit model
 fit0 = reml(y=y,X=X,Z=Z,K=K)
-
 # BLUE and BLUP
 blue0 = fit0$Fixed[,1]
 gebv0 = fit0$EBV
-
 # Get VC
 fit0$VC[c(1:2)]
 ```
@@ -817,7 +811,7 @@ Z = gen
 dim(Z)
 ```
 
-## Example 3 - Fit the model
+## Example 4 - Fit the model
 
 ```{r,echo=TRUE,fig.width=8,fig.height=3.5,fig.align="center"}
 # Fit using the lme4 package
@@ -828,7 +822,7 @@ gebv0 = c(gen %*% marker_values)
 plot(marker_values,pch=16, xlab='SNP')
 ```
 
-## Example 3 - DIY BLUPs
+## Example 4 - DIY BLUPs
 
 ```{r,echo=TRUE}
 iK = diag(ncol(Z))
@@ -843,7 +837,7 @@ my_marker_values = g[-c(1:ncol(X))]
 my_gebv = c(gen %*% my_marker_values) # GEBVs from RR
 ```
 
-## Example 3 - DIY BLUPs
+## Example 4 - DIY BLUPs
 
 ```{r,echo=TRUE,fig.width=8,fig.height=4,fig.align="center"}
 par(mfrow=c(1,2))
@@ -851,14 +845,12 @@ plot(my_marker_values, marker_values, main="Markers")
 plot(my_gebv, gebv0, main="GEBV")
 ```
 
-## Example 3 - Heritability from RR
+## Example 4 - Heritability from RR
 
 ```{r,echo=TRUE,fig.width=4,fig.height=4,fig.align="center"}
 fit0$VC
-
 Scale=sum(apply(gen,2,var)); Va=fit0$VC[1]*Scale;  Ve=fit0$VC[2]
 round((Va/(Va+Ve)),2)
-
 K = tcrossprod(apply(gen,2,function(x) x-mean(X)))
 K = K/mean(diag(K)); round(reml(y,K=K)$VC,2)
 ```
@@ -880,7 +872,9 @@ for(i in 1:100){ # Check the VC convergence after few iterations
 ```
 
 # Break
+
 # Module 3 - Advanced topics
+
 ## Outline
 
 - Multivariate models
@@ -1165,7 +1159,6 @@ We can use REML, PRESS (=cross-validation) or Bayesian approach to solve RKHS
 # Make the kernel
 D2 = as.matrix(dist(wheat.X)^2)
 K = exp(-D2/mean(D2))
-
 # Below we are going to calibrate models on Env 2 and predict Env 3
 rkhs_press = NAM::press(y=Y[,2],K=K)$hat
 rkhs_reml = NAM::reml(y=Y[,2],K=K)$EBV
@@ -1370,7 +1363,6 @@ lines(x=c(.5,.5),y=c(.5,1),col=c(2,4),pch=20,lwd=5,type='p')
 #
 arrows(x0=.5,x1=.5,y0=0,y1=.2,code = 1)
 text(0.5,0.25,'p = q',cex=1.5)
-
 ```
 
 ##  Beavis effect: 1000 is just OK
@@ -1381,7 +1373,7 @@ text(0.5,0.25,'p = q',cex=1.5)
 
 GWAS tests $m$ hypothesis:
 
-- No correction: $\alpha = 0.05/m$
+- No correction: $\alpha = 0.05$
 - Bonferroni: $\alpha = 0.05/m$
 - FDR (25\%): $\alpha = 0.05/(m\times0.75)$
 
@@ -1749,5 +1741,12 @@ fit_rf = ranger::ranger(y~.,data= data.frame(y=y,M),importance='impurity')
 plot(fit_rf$variable.importance,ylab='Importance',main='Random Forest',col=COL+7,pch=20)
 ```
 
+## Thanks!
+
+Thanks!
+
++ e-mail: xaviera@purdue.edu or 
++ other resources: https://alenxav.wixsite.com/home
++ material: https://github.com/alenxav/Lectures/tree/master/Purdue_MLM
 
 # Break
