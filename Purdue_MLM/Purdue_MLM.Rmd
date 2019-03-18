@@ -1556,8 +1556,8 @@ plot(PCs,xlab='PC 1',ylab='PC 2',main='Population on eigen spaces',col=Data$Fam,
 ```{r,echo=TRUE,fig.width=6,fig.height=4,fig.align="center"}
 GeneticDistance = Gdist(M,method=6)
 Tree = hclust(GeneticDistance,method = 'ward.D2')
-plot(Tree,labels = FALSE)
 Clst = factor(cutree(Tree,k=2))
+plot(Tree,labels = FALSE)
 ```
 
 ## Single marker analysis
