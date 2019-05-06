@@ -62,7 +62,7 @@ fontsize: 6pt
 \newpage
 
 4. **Reviewer**
-    + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genetics (2016), G3 (2016), iMedPub (2016), Journal of Animal Breeding and Genetics (2018), PLOS Computational Biology (2018), The Crop Journal (2018), Heredity (2019).
+    + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genes (2019), Genetics (2016), G3 (2016), Heredity (2019), iMedPub (2016), Journal of Animal Breeding and Genetics (2018), PLOS Computational Biology (2018), The Crop Journal (2018).
     
 5. **Complimentary Background**
     + Plant genetics and breeding, 4 cr. (2012). *MAST*. University of Minnesota.
@@ -104,6 +104,7 @@ fontsize: 6pt
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
 3. **Articles**
+    + Lopez et al (2018). Genetic architecture of photosynthesis and water use efficiency in Soybean. Frontiers. [LINK](https://www.frontiersin.org/articles/10.3389/fpls.2019.00680)
     + Diers et al (2018). Genetic architecture of soybean yield and agronomic traits. G3. [LINK](http://www.g3journal.org/content/8/10/3367)
     + Xavier et al (2018). Genomic properties of the USDA soybean germplasm collection. Plant Genetic Resources. [LINK](https://www.cambridge.org/core/journals/plant-genetic-resources/article/population-and-quantitative-genomic-properties-of-the-usda-soybean-germplasm-collection/EF1E973DE6B4D0A315716E0DE4A060A1) 
     + Jarquin et al (2018). Modeling Interactions between environments, genotype and soybeans canopy. Agronomy. [LINK](http://www.mdpi.com/2073-4395/8/4/51)
