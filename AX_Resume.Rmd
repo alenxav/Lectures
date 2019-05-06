@@ -14,7 +14,7 @@ fontsize: 6pt
 
 ---
 
-> Self-motivated research scientist with expertise in the fields of agronomy, plant genetics and breeding, quantitative and statistical genetics, machine learning, phenomics and genomics. Adept in design, execution, and analysis of experiments, as well as analysis of observational studies. Proficient communicator with proven capacity to resolve problems within plant breeding-related and interdisciplinary team settings. Two years of industry experience as quantitative geneticist complemented by adjunct faculty position at Purdue University, which translated in instructing graduate courses, mentoring students and grant writing. Proactive character with personal values rooted on honesty and integrity. Leadership philosophy based on promoting collaborative environment, building trust and encouraging teamwork.
+> Self-motivated research scientist with expertise in the fields of agronomy, plant genetics and breeding, quantitative and statistical genetics, machine learning, phenomics and genomics. Adept in design, execution, and analysis of experiments, as well as analysis of observational studies. Proficient communicator with proven capacity to resolve problems within plant breeding-related and interdisciplinary team settings. Three years of industry experience as quantitative geneticist, complemented by adjunct faculty position at Purdue University. Proactive character with personal values rooted on honesty and integrity. Leadership based on promoting collaborative environment, building trust and encouraging teamwork.
 
 ---
 
@@ -22,7 +22,7 @@ fontsize: 6pt
 
 + 2018 - Current: **Quantitative Geneticists**, Dpt of Biostatistics at Corteva Agrisciences.
 + 2017 - Current: **Quantitative Geneticists**, Adjunct Faculty in the Dpt of Agronomy, Purdue University.
-+ 2016 - 2017: **Quantitative Geneticists**, Dow AgroSciences. Supv. by Mak Geha (mjgeha@dow.com).
++ 2016 - 2017: **Quantitative Geneticists**, Dow AgroSciences. Supv. by Mak Geha (makram.geha@corteva.com).
 + 2013 - 2016: **RA Population Genetics**, Purdue University. Supv. by William Muir (bmuir@purdue.edu).
 + 2013 - 2016: **RA Soybean Breeding**, Purdue University. Supv. by Katy Rainey (krainey@purdue.edu).
 + 2012 (5 mo.): **Intern Small Grain Pathology**, UMN. Supv. by Ruth Dill-Macky (ruthdm@umn.edu).
@@ -89,8 +89,9 @@ fontsize: 6pt
     + Xavier, A. et al. (2015). bWGR: Bayesian Whole-Genome Regression. [LINK](https://CRAN.R-project.org/package=bWGR)
     + Xavier, A. et al. (2015). ClickNAM interactive GWAS. [LINK](https://xaviera.shinyapps.io/clickNAM).
 
-2. **Presentations (Speaker)**
-    + Xavier, A. Good learners, faster learning. *PAG*, 2019.
+2. **Presentations & Short Courses**
+    + Xavier, A., Brito, L., Rainey, KM. Mixed models applied to breeding. *Purdue*, 2019. [LINK](http://rpubs.com/alenxav/purdue_mm)
+    + Xavier, A. Good learners, faster learning. *PAG*, 2019. [LINK](https://pag.confex.com/pag/xxvii/meetingapp.cgi/Paper/33034)
     + Xavier, A. and Morota, G. Short course in mixed models. *UFV*, 2018.
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UFV*, 2018.
     + AGRY611, Quantitative Genetics (7 lectures), Purdue University, Fall 2017.
