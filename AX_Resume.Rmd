@@ -20,9 +20,8 @@ fontsize: 6pt
 
 ## EXPERIENCE
 
-+ 2018 - Current: **Quantitative Geneticists**, Dpt of Biostatistics at Corteva Agrisciences.
++ 2016 - Current: **Quantitative Geneticists**, Dpt of Biostatistics at Corteva Agrisciences.
 + 2017 - Current: **Quantitative Geneticists**, Adjunct Faculty in the Dpt of Agronomy, Purdue University.
-+ 2016 - 2017: **Quantitative Geneticists**, Dow AgroSciences. Supv. by Mak Geha (makram.geha@corteva.com).
 + 2013 - 2016: **RA Population Genetics**, Purdue University. Supv. by William Muir (bmuir@purdue.edu).
 + 2013 - 2016: **RA Soybean Breeding**, Purdue University. Supv. by Katy Rainey (krainey@purdue.edu).
 + 2012 (5 mo.): **Intern Small Grain Pathology**, UMN. Supv. by Ruth Dill-Macky (ruthdm@umn.edu).
@@ -54,7 +53,7 @@ fontsize: 6pt
 3. **Areas of Expertise**
     + Plant genetics and breeding, field breeding techniques and selection theory;
     + Phenomics and high-throughput technologies in plant breeding;
-    + Mixed models, machine learning and Bayesian methods;
+    + Mixed models, multivariate models, machine learning and Bayesian methods;
     + QTL mapping, Genome-wide association mapping, genome-wide prediction methods;
     + Spatial statistics, adjustment of field variation and imputation methods;
     + Computational breeding, algorithm development and high-performance computing;
@@ -77,7 +76,7 @@ fontsize: 6pt
     
 6. **Computational**
     + Advanced R programming and related tools (Markdown, Shiny, Rcpp);
-    + Broad background on C++, parallel computing and commercial software (SAS, ASReml, BLUPF90);
+    + Background on C++, parallel computing, commercial platforms (SAS, ASReml, BLUPF90, Docker, AWS);
     + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX;
     + General bioinformatics applied to genomics and pipeline development.
 
