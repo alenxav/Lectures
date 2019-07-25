@@ -63,7 +63,7 @@ fontsize: 6pt
 4. **Reviewer**
     + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genes (2019), Genetics (2016), G3 (2016), Heredity (2019), iMedPub (2016), Journal of Animal Breeding and Genetics (2018), Plants (2019), PLOS Computational Biology (2018), The Crop Journal (2018), Theoretical and Applied Genetics (2019).
     
-5. **Complimentary Background**
+5. **Complementary Background**
     + Plant genetics and breeding, 4 cr. (2012). *MAST*. University of Minnesota.
     + Plant disease resistance, 3 cr. (2012). *MAST*. University of Minnesota.
     + Weed ecology and management, 3 cr. (2012). *MAST*. University of Minnesota.
