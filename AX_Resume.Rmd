@@ -23,7 +23,7 @@ fontsize: 6pt
 
 ## EXPERIENCE
 
-+ 2016 - Current: **Quantitative Geneticists**, Dpt of Biostatistics at Corteva Agrisciences.
++ 2016 - Current: **Quantitative Geneticists**, Biostatistics group at Corteva Agrisciences.
 + 2017 - Current: **Quantitative Geneticists**, Adjunct Faculty in the Dpt of Agronomy, Purdue University.
 + 2013 - 2016: **RA Population Genetics**, Purdue University. Supv. by William Muir (bmuir@purdue.edu).
 + 2013 - 2016: **RA Soybean Breeding**, Purdue University. Supv. by Katy Rainey (krainey@purdue.edu).
