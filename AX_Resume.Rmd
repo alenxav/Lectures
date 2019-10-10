@@ -92,6 +92,7 @@ fontsize: 6pt
     + Xavier, A. et al. (2015). ClickNAM interactive GWAS. [LINK](https://xaviera.shinyapps.io/clickNAM).
 
 2. **Presentations & Short Courses**
+    + Xavier, A. Good learners, faster learning. *IMPG3*, 2019. [LINK](https://gvenck.github.io/1home.html)
     + Xavier, A., Brito, L., Rainey, KM. Mixed models applied to breeding. *Purdue*, 2019. [LINK](http://rpubs.com/alenxav/purdue_mm)
     + Xavier, A. Good learners, faster learning. *PAG*, 2019. [LINK](https://pag.confex.com/pag/xxvii/meetingapp.cgi/Paper/33034)
     + Xavier, A. and Morota, G. Short course in mixed models. *UFV*, 2018.
@@ -107,6 +108,7 @@ fontsize: 6pt
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
 3. **Articles**
+    + Xavier et al (2019). bWGR: Bayesian Whole-Genome Regression. Bioinformatics. 
     + Xavier (2019). Efficient Estimation of Marker Effects in Plant Breeding. G3. [LINK](https://www.g3journal.org/content/early/2019/09/19/g3.119.400728)
     + Lopez et al (2019). Genetic architecture of photosynthesis and water use efficiency in Soybean. Frontiers. [LINK](https://www.frontiersin.org/articles/10.3389/fpls.2019.00680)
     + Diers et al (2018). Genetic architecture of soybean yield and agronomic traits. G3. [LINK](http://www.g3journal.org/content/8/10/3367)
