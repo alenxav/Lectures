@@ -60,12 +60,15 @@ fontsize: 6pt
     + Spatial statistics, adjustment of field variation and imputation methods;
     + Computational breeding, algorithm development and high-performance computing;
 
+4. **Editor**
+    + Scientia Agricola (2019)
+
 \newpage
 
-4. **Reviewer**
+5. **Reviewer**
     + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genes (2019), Genetics (2016), G3 (2016), Heredity (2019), iMedPub (2016), International Journal of Molecular Sciences (2019), Journal of Animal Breeding and Genetics (2018), Plants (2019), PLOS Computational Biology (2018), The Crop Journal (2018), Theoretical and Applied Genetics (2019).
-    
-5. **Complementary Background**
+
+6. **Complementary Background**
     + Plant genetics and breeding, 4 cr. (2012). *MAST*. University of Minnesota.
     + Plant disease resistance, 3 cr. (2012). *MAST*. University of Minnesota.
     + Weed ecology and management, 3 cr. (2012). *MAST*. University of Minnesota.
@@ -76,11 +79,12 @@ fontsize: 6pt
     + Population Genetic Data Analysis (2016). *SISG*. University of Washington.
     + Association Mapping: GWAS and Sequencing Data (2016). *SISG*. University of Washington.
     
-6. **Computational**
+7. **Computational**
     + Advanced R programming and related tools (Markdown, Shiny, Rcpp);
     + Background on C++, parallel computing, commercial platforms (SAS, ASReml, BLUPF90, Docker, AWS);
     + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX;
     + General bioinformatics applied to genomics and pipeline development.
+
 
 ## PUBLICATIONS
 
