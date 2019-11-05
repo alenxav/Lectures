@@ -15,7 +15,6 @@ fontsize: 6pt
 
 ---
 
-
 > Self-motivated research scientist with expertise in the fields of agronomy, plant genetics and breeding, quantitative and statistical genetics, machine learning, phenomics and genomics. Adept in design, execution, and analysis of experiments, as well as analysis of observational studies. Proficient communicator with proven capacity to resolve problems within plant breeding-related and interdisciplinary team settings. Three years of industry experience as quantitative geneticist, complemented by adjunct faculty position at Purdue University. Proactive character with personal values rooted on honesty and integrity. Leadership based on promoting collaborative environment, building trust and encouraging teamwork.
 
 ---
