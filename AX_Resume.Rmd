@@ -113,7 +113,7 @@ fontsize: 6pt
 3. **Articles**
     + Xavier and Rainey (2019). Quantitative Genomic Dissection of Soybean Yield Components. bioRxiv. [LINK](https://www.biorxiv.org/content/10.1101/784538v1)
     + Xavier et al (2019). bWGR: Bayesian Whole-Genome Regression. Bioinformatics. [LINK](https://doi.org/10.1093/bioinformatics/btz794)
-    + Xavier (2019). Efficient Estimation of Marker Effects in Plant Breeding. G3. [LINK](https://www.g3journal.org/content/early/2019/09/19/g3.119.400728)
+    + Xavier (2019). Efficient Estimation of Marker Effects in Plant Breeding. G3. [LINK](https://www.g3journal.org/content/9/11/3855)
     + Lopez et al (2019). Genetic architecture of photosynthesis and water use efficiency in Soybean. Frontiers. [LINK](https://www.frontiersin.org/articles/10.3389/fpls.2019.00680)
     + Diers et al (2018). Genetic architecture of soybean yield and agronomic traits. G3. [LINK](http://www.g3journal.org/content/8/10/3367)
     + Xavier et al (2018). Genomic properties of the USDA soybean germplasm collection. Plant Genetic Resources. [LINK](https://www.cambridge.org/core/journals/plant-genetic-resources/article/population-and-quantitative-genomic-properties-of-the-usda-soybean-germplasm-collection/EF1E973DE6B4D0A315716E0DE4A060A1) 
