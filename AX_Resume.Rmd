@@ -79,11 +79,9 @@ fontsize: 6pt
     + Association Mapping: GWAS and Sequencing Data (2016). *SISG*. University of Washington.
     
 7. **Computational**
-    + Advanced R programming and related tools (Markdown, Shiny, Rcpp);
-    + Background on C++, parallel computing, commercial platforms (SAS, ASReml, BLUPF90, Docker, AWS);
-    + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX;
-    + General bioinformatics applied to genomics and pipeline development.
-
+    + Advanced R programming and related tools (Markdown, Shiny, Rcpp).
+    + Background on C++, parallel computing, commercial platforms (SAS, ASReml, BLUPF90, Docker, AWS).
+    + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX.
 
 ## PUBLICATIONS
 
@@ -94,7 +92,7 @@ fontsize: 6pt
     + Xavier, A. et al. (2015). ClickNAM interactive GWAS. [LINK](https://xaviera.shinyapps.io/clickNAM).
 
 2. **Presentations & Short Courses**
-    + Xavier, A. Good learners, faster learning. *IMPG3*, 2019. [LINK](https://gvenck.github.io/1home.html)
+    + Xavier, A. Good learners, faster learning. *IMPG3*, University of Sao Paulo, 2019. [LINK](https://gvenck.github.io/1home.html)
     + Xavier, A., Brito, L., Rainey, KM. Mixed models applied to breeding. *Purdue*, 2019. [LINK](http://rpubs.com/alenxav/purdue_mm)
     + Xavier, A. Good learners, faster learning. *PAG*, 2019. [LINK](https://pag.confex.com/pag/xxvii/meetingapp.cgi/Paper/33034)
     + Xavier, A. and Morota, G. Short course in mixed models. *UFV*, 2018.
@@ -105,11 +103,11 @@ fontsize: 6pt
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UNL*, 2016.
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *Cornell*, 2016.
     + Xavier, A. Learning from Data: GxE analysis on multiple population. *SBW*, 2016.
-    + AGRY301, Genetics (1 lecture), Purdue University, Summer 2016.
     + Xavier, A. Learning from Data. Purdue. [LINK](https://www.youtube.com/watch?v=l9vlO8kmreI). 2015.
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
 3. **Articles**
+    + Gangurde et al. (Accepted). NAM uncovers candidate genes for seed and pod weights in peanut. Plant Biotech J. 
     + Xavier and Rainey (2019). Quantitative Genomic Dissection of Soybean Yield Components. bioRxiv. [LINK](https://www.biorxiv.org/content/10.1101/784538v1)
     + Xavier et al (2019). bWGR: Bayesian Whole-Genome Regression. Bioinformatics. [LINK](https://doi.org/10.1093/bioinformatics/btz794)
     + Xavier (2019). Efficient Estimation of Marker Effects in Plant Breeding. G3. [LINK](https://www.g3journal.org/content/9/11/3855)
