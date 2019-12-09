@@ -107,7 +107,8 @@ fontsize: 6pt
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
 3. **Articles**
-    + Gangurde et al. (Accepted). NAM uncovers candidate genes for seed and pod weights in peanut. Plant Biotech J. 
+    + Xavier and Rainey (2020). Quantitative Genomic Dissection of Soybean Yield Components. G3. 
+    + Gangurde et al. (2019). NAM uncovers candidate genes for seed and pod weights in peanut. Plant Biotech J. [LINK](https://onlinelibrary.wiley.com/doi/abs/10.1111/pbi.13311)
     + Xavier and Rainey (2019). Quantitative Genomic Dissection of Soybean Yield Components. bioRxiv. [LINK](https://www.biorxiv.org/content/10.1101/784538v1)
     + Xavier et al (2019). bWGR: Bayesian Whole-Genome Regression. Bioinformatics. [LINK](https://doi.org/10.1093/bioinformatics/btz794)
     + Xavier (2019). Efficient Estimation of Marker Effects in Plant Breeding. G3. [LINK](https://www.g3journal.org/content/9/11/3855)
