@@ -1,6 +1,6 @@
 ---
 title: "Alencar Xavier"
-author: "Quantitative Genetics & Data Sciences"
+author: "Plant Breeding & Statistical Genetics"
 output: pdf_document
 geometry: margin=0.2in
 fontsize: 6pt
