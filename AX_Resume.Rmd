@@ -25,8 +25,6 @@ fontsize: 6pt
 + 2017 - Current: **Adjunct Faculty**, Department of Agronomy, Purdue University.
 + 2013 - 2016: **RA Population Genetics**, Purdue University. Supv. by William Muir (bmuir@purdue.edu).
 + 2013 - 2016: **RA Soybean Breeding**, Purdue University. Supv. by Katy Rainey (krainey@purdue.edu).
-+ 2012 (5 mo.): **Intern Small Grain Pathology**, UMN. Supv. by Ruth Dill-Macky (ruthdm@umn.edu).
-+ 2011 (7 mo.): **Intern Sugar Beet Breeding**, KWS Betaseed. Supv. by Paloma Moe (pmoe@betaseed.com).
 + 2010 - 2011: **RA Potato Breeding**, UFSM, Brazil. Supv. by Dilson Bisognin (dilsonb@smail.ufsm.br).
 + 2009 - 2011: **RA Soil Physics**, UFSM, Brazil. Supv. by Jose Miguel Reichert (reichert.jm@gmail.com).
 
@@ -55,8 +53,8 @@ fontsize: 6pt
     + Plant genetics and breeding, field breeding techniques and selection theory;
     + Phenomics and high-throughput technologies in plant breeding;
     + Mixed models, multivariate models, machine learning and Bayesian methods;
-    + QTL mapping, Genome-wide association mapping, genome-wide prediction methods;
     + Spatial statistics, adjustment of field variation and imputation methods;
+    + QTL mapping, Genome-wide association mapping, genome-wide prediction methods;
     + Computational breeding, algorithm development and high-performance computing;
 
 4. **Editor**
@@ -80,7 +78,8 @@ fontsize: 6pt
     
 7. **Computational**
     + Advanced R programming and related tools (Markdown, Shiny, Rcpp).
-    + Background on C++, parallel computing, commercial platforms (SAS, ASReml, BLUPF90, Docker, AWS).
+    + Background on C++, parallel computing, commercial analytical libraries (SAS, ASReml, BLUPF90).
+    + Familiarity with machine learning computation and libraries (AWS, Docker, Keras, h2o, XGBoost).
     + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX.
 
 ## PUBLICATIONS
@@ -89,7 +88,6 @@ fontsize: 6pt
     + Xavier, A. et al. (2015). NAM: Nested Association Mapping. [LINK](https://CRAN.R-project.org/package=NAM)
     + Xavier, A. et al. (2015). SoyNAM Dataset. [LINK](https://CRAN.R-project.org/package=SoyNAM)
     + Xavier, A. et al. (2015). bWGR: Bayesian Whole-Genome Regression. [LINK](https://CRAN.R-project.org/package=bWGR)
-    + Xavier, A. et al. (2015). ClickNAM interactive GWAS. [LINK](https://xaviera.shinyapps.io/clickNAM).
 
 2. **Presentations & Short Courses**
     + Xavier, A. Good learners, faster learning. *IMPG3*, University of Sao Paulo, 2019. [LINK](https://gvenck.github.io/1home.html)
@@ -106,7 +104,8 @@ fontsize: 6pt
     + Xavier, A. Learning from Data. Purdue. [LINK](https://www.youtube.com/watch?v=l9vlO8kmreI). 2015.
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
-3. **Articles**
+3. **Selected articles**
+    + Hall, Xavier, et al. (2020). Quantitative characterization of proximate sensing canopy traits. Crop Sciences.  [LINK](https://doi.org/10.1002/csc2.20132)
     + Xavier and Rainey (2020). Quantitative Genomic Dissection of Soybean Yield Components. G3. [LINK](https://doi.org/10.1534/g3.119.400896)
     + Gangurde et al. (2020). NAM uncovers candidate genes for seed and pod weights in peanut. Plant Biotech J. [LINK](https://onlinelibrary.wiley.com/doi/abs/10.1111/pbi.13311)
     + Xavier and Rainey (2019). Quantitative Genomic Dissection of Soybean Yield Components. bioRxiv. [LINK](https://www.biorxiv.org/content/10.1101/784538v1)
@@ -125,6 +124,3 @@ fontsize: 6pt
     + Xavier et al (2016). Genetic variation captured by a SNP panel in soybean. BMC Informatics. [LINK](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4736474/)
     + Xavier (2016). Learning from data: Plant breeding applications of machine learning. Purdue University. [LINK](https://docs.lib.purdue.edu/cgi/viewcontent.cgi?referer=https://www.google.com/&httpsredir=1&article=2076&context=open_access_dissertations)
     + Xavier et al (2015). Association Studies in Multiple Populations. Bioinformatics. [LINK](http://bioinformatics.oxfordjournals.org/content/early/2015/08/03/bioinformatics.btv448.abstract).
-    + Kielse et al (2013). Vegetative Propagation of *Cordia trichotoma* from Root Cuttings. Arvore. [LINK](http://www.scielo.br/pdf/rarv/v37n1/v37n1a07.pdf). 
-    + Mentges et al (2013). Mechanical & structural changes of flooded soil with rice cultivation. R.Bras.Ci.Solo. [LINK](http://www.scielo.br/pdf/rbcs/v37n1/v37n1a23.pdf).
-    + Gubiani et al (2009). Soil fertility management using the software CADUB. Plantio Direto. [LINK](http://www.plantiodireto.com.br/?body=cont_int&id=952).
