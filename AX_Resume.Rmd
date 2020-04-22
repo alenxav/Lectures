@@ -78,7 +78,7 @@ fontsize: 6pt
     
 7. **Computational**
     + Advanced R programming and related tools (Markdown, Shiny, Rcpp).
-    + Background on C++, parallel computing, commercial analytical libraries (SAS, ASReml, BLUPF90).
+    + Background on C++, parallel computing, commercial analytical libraries (Eigen, SAS, ASReml, BLUPF90).
     + Familiarity with machine learning computation and libraries (AWS, Docker, Keras, h2o, XGBoost).
     + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX.
 
@@ -105,6 +105,8 @@ fontsize: 6pt
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
 3. **Selected articles**
+    + Mohammadi, Xavier, et al. (2020). Deployment of QTLs from
+GWAS in plants. Current Plant Biology.  [LINK](https://doi.org/10.1016/j.cpb.2020.100145)
     + Hall, Xavier, et al. (2020). Quantitative characterization of proximate sensing canopy traits. Crop Sciences.  [LINK](https://doi.org/10.1002/csc2.20132)
     + Xavier and Rainey (2020). Quantitative Genomic Dissection of Soybean Yield Components. G3. [LINK](https://doi.org/10.1534/g3.119.400896)
     + Gangurde et al. (2020). NAM uncovers candidate genes for seed and pod weights in peanut. Plant Biotech J. [LINK](https://onlinelibrary.wiley.com/doi/abs/10.1111/pbi.13311)
