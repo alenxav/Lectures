@@ -1,25 +1,20 @@
 ---
 title: "Alencar Xavier"
-author: "Plant Breeding & Statistical Genetics"
+author: "Plant Breeding and Statistical Genetics"
 output: pdf_document
 geometry: margin=0.2in
 fontsize: 6pt
 ---
 
-+ E-mail: alenxav@gmail.com
-+ Website: http://alenxav.wix.com/home
-+ GitHub: https://github.com/alenxav/
-+ ORCID: orcid.org/0000-0001-5034-9954
-+ Phone: 765-631-2572
-
-
----
++--------------------------------+-------------------------------------------+-------------------------------------------+
+| **E-mail**: alenxav@gmail.com  |  **Website**: http://alenxav.wix.com/home |  **ORCID**: orcid.org/0000-0001-5034-9954 |
++--------------------------------+-------------------------------------------+---+
+| **Phone**: 765-631-2572        |  **GitHub**: https://github.com/alenxav/  |   |
++--------------------------------+-------------------------------------------+---+
 
 > Self-motivated research scientist with expertise in the fields of agronomy, plant genetics and breeding, quantitative and statistical genetics, machine learning, phenomics and genomics. Adept in design, execution, and analysis of experiments, as well as analysis of observational studies. Proficient communicator with proven capacity to resolve problems within plant breeding-related and interdisciplinary team settings. Three years of industry experience as quantitative geneticist, complemented by adjunct faculty position at Purdue University. Proactive character with personal values rooted on honesty and integrity. Leadership based on promoting collaborative environment, building trust and encouraging teamwork.
 
----
-
-## EXPERIENCE
+### EXPERIENCE
 
 + 2016 - Current: **Research Scientist**, Biostatistics group at Corteva Agrisciences.
 + 2017 - Current: **Adjunct Faculty**, Department of Agronomy, Purdue University.
@@ -28,7 +23,7 @@ fontsize: 6pt
 + 2010 - 2011: **RA Potato Breeding**, UFSM, Brazil. Supv. by Dilson Bisognin (dilsonb@smail.ufsm.br).
 + 2009 - 2011: **RA Soil Physics**, UFSM, Brazil. Supv. by Jose Miguel Reichert (reichert.jm@gmail.com).
 
-## ACADEMICS
+### ACADEMICS
 
 1. **Academic Background**
     + *Technical degree in agriculture and livestock* (2004-2006). E.E.T. Celeste Gobbato, RS, Brazil.
@@ -60,8 +55,6 @@ fontsize: 6pt
 4. **Editor**
     + Scientia Agricola (2019)
 
-\newpage
-
 5. **Reviewer**
     + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genes (2019), Genetics (2016), G3 (2016), Heredity (2019), iMedPub (2016), International Journal of Molecular Sciences (2019), Journal of Animal Breeding and Genetics (2018), Plants (2019), PLOS Computational Biology (2018), The Crop Journal (2018), Theoretical and Applied Genetics (2019).
 
@@ -82,7 +75,7 @@ fontsize: 6pt
     + Familiarity with machine learning computation and libraries (AWS, Docker, Keras, h2o, XGBoost).
     + Basic coding in Python, Shell, SQL, Perl/regex and LaTeX.
 
-## PUBLICATIONS
+### PUBLICATIONS
 
 1. **Software**
     + Xavier, A. et al. (2015). NAM: Nested Association Mapping. [LINK](https://CRAN.R-project.org/package=NAM)
@@ -90,14 +83,15 @@ fontsize: 6pt
     + Xavier, A. et al. (2015). bWGR: Bayesian Whole-Genome Regression. [LINK](https://CRAN.R-project.org/package=bWGR)
 
 2. **Presentations & Short Courses**
+    + AGRY-XXXX (1 lecture) Quantitative Genomics Applied to Breeding, Fall 2019. [LINK](https://github.com/alenxav/Lectures/tree/master/Purdue_2019)
     + Xavier, A. Good learners, faster learning. *IMPG3*, University of Sao Paulo, 2019. [LINK](https://gvenck.github.io/1home.html)
     + Xavier, A., Brito, L., Rainey, KM. Mixed models applied to breeding. *Purdue*, 2019. [LINK](http://rpubs.com/alenxav/purdue_mm)
     + Xavier, A. Good learners, faster learning. *PAG*, 2019. [LINK](https://pag.confex.com/pag/xxvii/meetingapp.cgi/Paper/33034)
-    + Xavier, A. and Morota, G. Short course in mixed models. *UFV*, 2018.
+    + Xavier, A. and Morota, G. Short course in mixed models. *UFV*, 2018. [LINK](https://github.com/alenxav/Lectures/upload)
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UFV*, 2018.
-    + AGRY611, Quantitative Genetics (7 lectures), Purdue University, Fall 2017.
+    + AGRY611, Quantitative Genetics (7 lectures), Purdue University, Fall 2017. [LINK](https://github.com/alenxav/Lectures/tree/master/Purdue_2017)
     + AGRY620, Advanced Plant Breeding (3 lectures), Purdue University, Spring 2017.
-    + Xavier, A. Analytical Methods for Phenomics. *Purdue Phenomic Workshop*, 2017.
+    + Xavier, A. Analytical Methods for Phenomics. *Purdue Phenomic Workshop*, 2017. [LINK](https://github.com/alenxav/Lectures/blob/master/PhenomicWorkshop2017/AX_Phenomic2017.pdf)
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *UNL*, 2016.
     + Xavier, A. Learning from Data: Machine Learning in Plant Breeding. *Cornell*, 2016.
     + Xavier, A. Learning from Data: GxE analysis on multiple population. *SBW*, 2016.
@@ -126,3 +120,6 @@ GWAS in plants. Current Plant Biology.  [LINK](https://doi.org/10.1016/j.cpb.202
     + Xavier et al (2016). Genetic variation captured by a SNP panel in soybean. BMC Informatics. [LINK](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4736474/)
     + Xavier (2016). Learning from data: Plant breeding applications of machine learning. Purdue University. [LINK](https://docs.lib.purdue.edu/cgi/viewcontent.cgi?referer=https://www.google.com/&httpsredir=1&article=2076&context=open_access_dissertations)
     + Xavier et al (2015). Association Studies in Multiple Populations. Bioinformatics. [LINK](http://bioinformatics.oxfordjournals.org/content/early/2015/08/03/bioinformatics.btv448.abstract).
+    
+4. **Patents**
+    + Rainey, et al. (2018). Method of using genetic architecture of phenomic-enabled canopy coverage in glycine max. [LINK](https://patents.google.com/patent/US20180232579A1/en)
