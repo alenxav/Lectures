@@ -83,7 +83,7 @@ fontsize: 6pt
     + Xavier, A. et al. (2015). bWGR: Bayesian Whole-Genome Regression. [LINK](https://CRAN.R-project.org/package=bWGR)
 
 2. **Presentations & Short Courses**
-    + AGRY-XXXX (1 lecture) Quantitative Genomics Applied to Breeding, Fall 2019. [LINK](https://github.com/alenxav/Lectures/tree/master/Purdue_2019)
+    + ANSC595, Quantitative Genomics Applied to Breeding (1 lecture), Purdue University, Fall 2019. [LINK](https://github.com/alenxav/Lectures/tree/master/Purdue_2019)
     + Xavier, A. Good learners, faster learning. *IMPG3*, University of Sao Paulo, 2019. [LINK](https://gvenck.github.io/1home.html)
     + Xavier, A., Brito, L., Rainey, KM. Mixed models applied to breeding. *Purdue*, 2019. [LINK](http://rpubs.com/alenxav/purdue_mm)
     + Xavier, A. Good learners, faster learning. *PAG*, 2019. [LINK](https://pag.confex.com/pag/xxvii/meetingapp.cgi/Paper/33034)
