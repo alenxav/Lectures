@@ -58,10 +58,14 @@ fontsize: 6pt
 5. **Reviewer**
     + African Journal of Agricultural Research (2016), BMC Genomics (2016), Crop Science (2016), Euphytica (2018), Evolutionary Bioinformatics (2018), Field Crop Research (2018), Genes (2019), Genetics (2016), G3 (2016), Heredity (2019), iMedPub (2016), International Journal of Molecular Sciences (2019), Journal of Animal Breeding and Genetics (2018), Plants (2019), PLOS Computational Biology (2018), The Crop Journal (2018), Theoretical and Applied Genetics (2019).
 
-6. **Complementary Background**
-    + Plant genetics and breeding, 4 cr. (2012). *MAST*. University of Minnesota.
-    + Plant disease resistance, 3 cr. (2012). *MAST*. University of Minnesota.
-    + Weed ecology and management, 3 cr. (2012). *MAST*. University of Minnesota.
+6. **Patents**
+    + Rainey, et al. (2018). Method of using genetic architecture of phenomic-enabled canopy coverage in glycine max. [LINK](https://patents.google.com/patent/US20180232579A1/en)
+    
+    
+7. **Grants**
+    + Rainey, et al. (2020). Application of UAS biomass longitudinal phenotypes to selection in soybean breeding trials. National Institute of Food and Agriculture, USDA.
+
+8. **Complementary Background**
     + Mixed Models in Quantitative Genetics (2013). *SISG*. University of Washington.
     + Markov chain Monte Carlo applied to Genetic Analysis (2013). *SISG*. University of Washington.
     + Supervised Methods for Statistical Machine Learning (2015). *SISG*. University of Washington.
@@ -69,7 +73,7 @@ fontsize: 6pt
     + Population Genetic Data Analysis (2016). *SISG*. University of Washington.
     + Association Mapping: GWAS and Sequencing Data (2016). *SISG*. University of Washington.
     
-7. **Computational**
+9. **Computational**
     + Advanced R programming and related tools (Markdown, Shiny, Rcpp).
     + Background on C++, parallel computing, commercial analytical libraries (Eigen, SAS, ASReml, BLUPF90).
     + Familiarity with machine learning computation and libraries (AWS, Docker, Keras, h2o, XGBoost).
@@ -104,7 +108,6 @@ GWAS in plants. Current Plant Biology.  [LINK](https://doi.org/10.1016/j.cpb.202
     + Hall, Xavier, et al. (2020). Quantitative characterization of proximate sensing canopy traits. Crop Sciences.  [LINK](https://doi.org/10.1002/csc2.20132)
     + Xavier and Rainey (2020). Quantitative Genomic Dissection of Soybean Yield Components. G3. [LINK](https://doi.org/10.1534/g3.119.400896)
     + Gangurde et al. (2020). NAM uncovers candidate genes for seed and pod weights in peanut. Plant Biotech J. [LINK](https://onlinelibrary.wiley.com/doi/abs/10.1111/pbi.13311)
-    + Xavier and Rainey (2019). Quantitative Genomic Dissection of Soybean Yield Components. bioRxiv. [LINK](https://www.biorxiv.org/content/10.1101/784538v1)
     + Xavier et al (2019). bWGR: Bayesian Whole-Genome Regression. Bioinformatics. [LINK](https://doi.org/10.1093/bioinformatics/btz794)
     + Xavier (2019). Efficient Estimation of Marker Effects in Plant Breeding. G3. [LINK](https://www.g3journal.org/content/9/11/3855)
     + Lopez et al (2019). Genetic architecture of photosynthesis and water use efficiency in Soybean. Frontiers. [LINK](https://www.frontiersin.org/articles/10.3389/fpls.2019.00680)
@@ -121,5 +124,3 @@ GWAS in plants. Current Plant Biology.  [LINK](https://doi.org/10.1016/j.cpb.202
     + Xavier (2016). Learning from data: Plant breeding applications of machine learning. Purdue University. [LINK](https://docs.lib.purdue.edu/cgi/viewcontent.cgi?referer=https://www.google.com/&httpsredir=1&article=2076&context=open_access_dissertations)
     + Xavier et al (2015). Association Studies in Multiple Populations. Bioinformatics. [LINK](http://bioinformatics.oxfordjournals.org/content/early/2015/08/03/bioinformatics.btv448.abstract).
     
-4. **Patents**
-    + Rainey, et al. (2018). Method of using genetic architecture of phenomic-enabled canopy coverage in glycine max. [LINK](https://patents.google.com/patent/US20180232579A1/en)
