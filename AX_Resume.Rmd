@@ -103,6 +103,7 @@ fontsize: 6pt
     + Rainey, KM and Xavier, A. Learning from Data: A SoyNAM Study. *SBW*, 2014.
 
 3. **Selected articles**
+    + Jarquin et al. (2020) Predicting yield from canopy imagery. Intelligent Image Analysis for Plant Phenotyping. [LINK](https://www.taylorfrancis.com/books/e/9781315177304/chapters/10.1201/9781315177304-16)
     + Mohammadi, Xavier, et al. (2020). Deployment of QTLs from
 GWAS in plants. Current Plant Biology.  [LINK](https://doi.org/10.1016/j.cpb.2020.100145)
     + Hall, Xavier, et al. (2020). Quantitative characterization of proximate sensing canopy traits. Crop Sciences.  [LINK](https://doi.org/10.1002/csc2.20132)
