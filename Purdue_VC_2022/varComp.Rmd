@@ -510,10 +510,10 @@ print(c(Ve=Ve, Vu=Vu, Vu2=Vu2))
 
 Simplification of the likelihood. From
 
-$$\partial L / \partial\sigma^2_u = tr(P V_i ) - y'PV_i'Py $$
+$$\partial L / \partial\sigma^2_i = tr(P V_i ) - y'PV_i'Py $$
 To
 
-$$\partial PL / \partial\sigma^2_u = tr(S V_i ) - y'SV_i'Py $$
+$$\partial PL / \partial\sigma^2_i = tr(S V_i ) - y'SV_i'Py $$
 
 Yielding ([Schaeffer 1986](https://www.sciencedirect.com/science/article/pii/S0022030286807433), [VanRaden 1988](https://www.sciencedirect.com/science/article/pii/S0022030288795417)):
 
