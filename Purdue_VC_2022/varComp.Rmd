@@ -139,7 +139,7 @@ $$Var(e)=R=I\sigma^2_e$$
 
 The joint variance, including marker effects $\beta$, is defined as
 
-$$Var\left[\begin{array}{r} y \\ u \\ \beta \\ e \end{array}\right] = \left[\begin{array}{rrrr} V  & ZG & Z\tilde{Z}D & R \\ GZ' & G & \tilde{Z}B & 0 \\ D\tilde{Z}'Z' & D\tilde{Z}' & D & 0 \\ R  & 0 & 0 & R \end{array}\right]$$
+$$Var\left[\begin{array}{r} y \\ u \\ \beta \\ e \end{array}\right] = \left[\begin{array}{rrrr} V  & ZG & Z\tilde{Z}D & R \\ GZ' & G & \tilde{Z}D & 0 \\ D\tilde{Z}'Z' & D\tilde{Z}' & D & 0 \\ R  & 0 & 0 & R \end{array}\right]$$
 
 where $u=\tilde{Z}\beta$, $\beta\sim N(0,D)$, $D=I_m\sigma^2_\beta$, and $G=A'\sigma^2_u=\tilde{Z}D\tilde{Z}'$. The model could be described as:
 
@@ -556,7 +556,7 @@ $$ S = \left[\begin{array}{rr} P\frac{\partial V}{\partial\sigma^2_u}P\frac{\par
 
 $$q = \left[\begin{array}{rr} y'P \frac{\partial V}{\partial\sigma^2_u} Py \\  y'P \frac{\partial V}{\partial\sigma^2_e} Py \end{array}\right] $$
 
-where $\frac{\partial V}{\partial\sigma^2_u}=ZAZ$ and $\frac{\partial V}{\partial\sigma^2_e}=I$
+where $\frac{\partial V}{\partial\sigma^2_u}=ZAZ'$ and $\frac{\partial V}{\partial\sigma^2_e}=I$
 
 ## MIVQUE
 
