@@ -13,7 +13,8 @@ dim(Obs)
 # Genomic Relationship Matrix
 N = apply(Gen,2,function(x)x-mean(x))
 A = tcrossprod(N)
-A = A/mean(diag(A))
+SumVarSNPs = mean(diag(A))
+A = A/SumVarSNPs
 diag(A) = diag(A)+0.01 # Stabilize GRM
 A = A/mean(diag(A))
 iA = solve(A)
@@ -144,9 +145,6 @@ FirDer2 = c( vu = ( q/vu - (t(u)%*%iA%*%u)/(vu^2) - tr(iA%*%C22)/(vu^2) ),
              ve = ( (n-rX)/ve - (1/ve)*(q-tr(iA%*%C22)/(vu))) - crossprod(e)/(ve^2) )
 vc - solve(SecDer2,FirDer2)
 
-
-
-
 # Gibbs sampler
 
 # Priors
@@ -161,4 +159,11 @@ Se = ve
 # Sample coefficients
 g_samp = sapply(1:(rX+q), function(j) rnorm(1,mean=c(r[j]-C[j,-j]%*%g[-j])/C[j,j],sd=sqrt(1/C[j,j])))
 plot(g,g_samp)
+
+
+# Marker effects
+vb = vu/SumVarSNPs
+beta = vb * c( t(Z1) %*% iG %*% u)
+plot(beta)
+
 

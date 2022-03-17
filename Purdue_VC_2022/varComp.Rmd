@@ -651,7 +651,7 @@ $$\sigma^2_u|u,S_u,\nu_u \sim \frac{u'A^{-1}u+S_u\nu_u}{\chi^2(q+\nu_u)}$$
 $$\sigma^2_e|e,S_e,\nu_e \sim \frac{e'e+S_e\nu_e}{\chi^2(n+\nu_e)}$$
 Using the mixed model equation ($Cg=r$) notation, we sample coefficients from:
 
-$$g_j|x,g_{-j} \sim N( r_j - C_{-j,j}g_{-j}  C^{-1}_{j,j}, C^{-1}_{j,j} )$$
+$$g_j|x,g_{-j} \sim N( \frac{r_j - C_{-j,j}g_{-j}}{C_{j,j}},\frac{1}{C_{j,j}} )$$
 
 ## Gibbs sampling
 
