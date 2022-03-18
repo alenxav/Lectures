@@ -90,14 +90,13 @@ head(Obs)
 
 From [Habier et al. 2007](https://academic.oup.com/genetics/article-abstract/177/4/2389/6064391) and [VanRaden 2008](https://www.sciencedirect.com/science/article/pii/S0022030208709901), we have
 
-$A=\frac{(M-P)(M-P)'}{2\sum{(1+f_j)p_j(1-p_j)}}$
+$$A=\frac{(M-P)(M-P)'}{2\sum{(1+f_j)p_j(1-p_j)}}$$
 
 Pre-center the markers ($\tilde{Z}=M-P$), then you get
 
-$A=\frac{\tilde{Z}\tilde{Z}'}{p^{-1}\sum_{j=1}^p(\tilde{z}_j'\tilde{z}_j)}$
+$$A=\alpha\tilde{Z}\tilde{Z}'$$
 
-
-Think of $A$ here as a additive kernel, **not as a pedigree matrix**.
+Where $\alpha^{-1} = n^{-1}\sum_{j=1}^p(\tilde{z}_j'\tilde{z}_j)$. Also, note that $A$ stands here for additive relationship, **not as a pedigree matrix**.
 
 
 ## Build GRM
@@ -106,10 +105,9 @@ Think of $A$ here as a additive kernel, **not as a pedigree matrix**.
 Z1 = apply(Gen,2,function(x) x-mean(x)) # Observed individuals
 Z2 = apply(Gen2,2,function(x) x-mean(x)) # Prediction target
 A = tcrossprod(Z1)
-SumVarSNPs = mean(diag(A))
-A = A/SumVarSNPs
+alpha = 1/mean(diag(A))
+A = A*alpha
 diag(A) = diag(A)+0.01 # Stabilize GRM
-A = A/mean(diag(A))
 iA = solve(A) # Get inverse
 ```
 
@@ -205,17 +203,17 @@ $$y=Xb+Zu+e$$
 
 $$
 \left[\begin{array}{rr}X'R^{-1} X  & Z'R^{-1}X \\X'R^{-1}Z & Z'R^{-1}Z+G^{-1}\end{array}\right] 
-\left[\begin{array}{r} b \\ u \end{array}\right]
+\left[\begin{array}{r}  \hat{b} \\ \hat{u} \end{array}\right]
 =\left[\begin{array}{r} X'R^{-1}y \\ Z'R^{-1}y \end{array}\right]
 $$
 
 $$
 \left[\begin{array}{rr} C_{11}  & C_{12} \\ C_{21}& C_{22}\end{array}\right] 
-\left[\begin{array}{r} g_1 \\ g_2 \end{array}\right]
+\left[\begin{array}{r} \hat{g}_1 \\ \hat{g}_2 \end{array}\right]
 =\left[\begin{array}{r} r_1 \\ r_2 \end{array}\right]
 $$
 
-$$Cg=r$$
+$$C\hat{g}=r$$
 
 where $C$ is the *left-hand side*, $r$ is the *right-hand side*.
 
@@ -227,11 +225,11 @@ Alternative notation
 
 $$y=Wg+e$$
 
-where $W=X|Z$, and $g=b|u$. Thus, MME
+where $W=\{X,Z\}$, and $g=\{b,u\}$. Thus, MME
 
-$$[W'R^{-1}W+\Sigma] g = W'R^{-1}y$$
+$$[W'R^{-1}W+\Sigma] \hat{g} = W'R^{-1}y$$
 
-where $W=X|Z$, $g=b|u$, and
+where 
 
 $$\Sigma= \left[\begin{array}{rr} 0 & 0 \\ 0 & G^{-1}\end{array}\right] $$
 
@@ -262,7 +260,7 @@ The "reduced animal model" simplifies the mixed model equation
 
 $$
 \left[\begin{array}{rr}X'R^{-1} X  & Z'R^{-1}X \\X'R^{-1}Z & Z'R^{-1}Z+G^{-1}\end{array}\right] 
-\left[\begin{array}{r} b \\ u \end{array}\right]
+\left[\begin{array}{r} \hat{b} \\ \hat{u} \end{array}\right]
 =\left[\begin{array}{r} X'R^{-1}y \\ Z'R^{-1}y \end{array}\right]
 $$
 
@@ -270,12 +268,12 @@ into
 
 $$
 \left[\begin{array}{rr}X'X  & Z'X \\X'Z & Z'Z+\lambda A^{-1}\end{array}\right] 
-\left[\begin{array}{r} b \\ u \end{array}\right]
+\left[\begin{array}{r} \hat{b} \\ \hat{u} \end{array}\right]
 =\left[\begin{array}{r} X'y \\ Z'y \end{array}\right]
 $$
 where $\lambda=\sigma^{2}_e\sigma^{-2}_u$. 
 
-That is achieved by multiplying every thing by $R$.
+That is achieved by multiplying every thing by $\sigma^{2}_e$.
 
 ## Reduced animal model
 
@@ -283,7 +281,7 @@ From a data-augmentation standpoint, the reduced model is:
 
 $$
 \left[\begin{array}{rr}X'X  & Z'X \\ X'Z & Z'Z \\ 0 &  \lambda A^{-1}  \end{array}\right] 
-\left[\begin{array}{r} b \\ u \end{array}\right]
+\left[\begin{array}{r} \hat{b} \\ \hat{u} \end{array}\right]
 =\left[\begin{array}{r} X'y \\ Z'y \\ 0 \end{array}\right]
 $$
 
@@ -295,18 +293,16 @@ Let $C^{-1}$ be described as
 $$
 C^{-1} = \left[\begin{array}{rr} C^{11}  & C^{12} \\ C^{21}& C^{22}\end{array}\right] 
 $$
+Useful because 
+
+$$Var(\hat{b}) = C^{11} = (X'V^{-1}X)^{-1}$$
+
+Also, we'll need $C^{22}$ to estimate variances later
 
 ```{r,fig.height=4, fig.width=4, fig.align = "center"}
 C22 = as.matrix(iC[-c(1:rX),-c(1:rX)])
 ```
 
-Useful because 
-
-$$Var(\hat{b}) = C^{11}$$
-
-Alternatively
-
-$$Var(\hat{b}) = (X'V^{-1}X)^{-1}$$
 
 ## Projection matrices
 
@@ -326,8 +322,6 @@ Mixed model absorption
 $$P=V^{-1}-V^{-1}X(X' V^{-1} X)^{-1}X'V^{-1}$$
 
 ##  Projection matrices
-
-$$$$
 
 $$H=WC^{-1}W'R^{-1}$$
 $$Hy=\hat{y}$$
@@ -349,25 +343,28 @@ e = y - yHat
 <div class="col2">
 
 $$SX = 0$$
-$$MX = 0$$
 $$PX = 0$$
 $$SS = S$$
+$$MX = 0$$
+
+$$My = y-X\hat{b}$$
 $$MM = M$$
 $$MS = M$$
 $$SM = S$$
 $$PVP = P$$
 $$P=V^{-1}M$$
-$$P=(XX\sigma^2_b+V)^{-1}$$ 
+$$P=(XX'\sigma^2_\infty+V)^{-1}$$ 
 $$ZAZ'Py=\frac{Z\hat{u}}{\hat{\sigma}^2_u}$$ 
 $$Py=\frac{\hat{e}}{\hat{\sigma}^2_e}$$ 
+
 
 </div>
 
 ##  BLUP solutions
 
-$$\hat{u}=\hat{g}_1$$
+$$\hat{u}=\hat{g}_2$$
 
-$$\hat{u}=GZPy$$
+$$\hat{u}=GZ'Py$$
 $$\hat{u}=(Z'R^{-1}Z+G^{-1})^{-1}Z'R^{-1}(y-X\hat{b})$$
 
 $$\hat{u}=(Z'Z+\sigma^{2}_e\sigma^{-2}_u A^{-1})^{-1}Z'(y-X\hat{b})$$
@@ -446,8 +443,8 @@ When all individuals are observed, the denominator $G_{ii}$ cancels out with the
 ## Accuracy
 
 ```{r,fig.height=4, fig.width=4, fig.align = "center"}
-R2_by_ind = function(z){  Cov12=(z%*%t(Z1)/SumVarSNPs)*vu
-  Var22 = c(crossprod(z)/SumVarSNPs)*vu
+R2_by_ind = function(z){  Cov12=(z%*%t(Z1)*alpha)*vu
+  Var22 = c(crossprod(z)*alpha)*vu
   R2 = Cov12%*%t(Z)%*%iV%*%Z%*%t(Cov12)/Var22}  
 Acc = sqrt(apply(Z2,1,R2_by_ind)); hist(Acc)
 ```
@@ -539,17 +536,20 @@ c(t(e) %*% Sy) / (n-rX)
 
 Minimum Variance Quadratic Unbiased Estimator ([Rao 1971](https://www.sciencedirect.com/science/article/pii/0047259X71900194)):
 
-- Unbiased: $E[y'Qy]=E[\epsilon_i'Q\epsilon_i]=0$
+- Unbiased variances: $E[\hat{\sigma}]=\sigma$
+- Quadratic unbiasedness: $E[y'Qy]=E[\epsilon_i'Q\epsilon_i]=0$
 - Invariant: $QX=0$
 - $y'Qy=y'Q\epsilon_0+y'Q\epsilon_1$ where $\epsilon_0=e$ and $\epsilon_1=Zu$.
 - Iterations of MIVQUE yields REML, we use $Q=P$.
 - General formulation:
 
-$$Sq=\sigma$$
+$$\hat{\sigma}=S^{-1}q$$
+Where $S$ and $q$ are defined next.
+
 
 ## MIVQUE
 
-$$Sq=\sigma$$
+$$\hat{\sigma}=S^{-1}q$$
 Terms are defined as
 
 $$ S = \left[\begin{array}{rr} P\frac{\partial V}{\partial\sigma^2_u}P\frac{\partial V}{\partial\sigma^2_u} & P\frac{\partial V}{\partial\sigma^2_u}P\frac{\partial V}{\partial\sigma^2_e} \\ P\frac{\partial V}{\partial\sigma^2_e}P\frac{\partial V}{\partial\sigma^2_u} & P\frac{\partial V}{\partial\sigma^2_e}P\frac{\partial V}{\partial\sigma^2_e} \end{array}\right]$$
@@ -572,13 +572,15 @@ solve(S,qs)
 
 ## Average-Information
 
-Average-Information ([Johnson and Thompson 1995](https://www.sciencedirect.com/science/article/pii/S0022030295766541)) is a second-derivative methods and work with:
+Second-derivative methods (NR, FS, AI) work with:
 
 $$\theta^{t+1} = \theta^{t}-\frac{f'}{f''}$$
 
-Where $f'=\Delta(\theta)$ and $f''=AI(\theta)$ are first and second derivatives, respectively.
+Where $f'$ and $f''$ are first and second derivatives, respectively. Where $f'=\Delta(\theta)$ is computed as
 
 $$\Delta(\sigma^2_i) = \partial L / \partial\sigma^2_i = tr(P \frac{\partial V}{\partial\sigma^2_i} ) - y'P \frac{\partial V}{\partial\sigma^2_i}Py $$
+
+And the ([average-Information](https://www.sciencedirect.com/science/article/pii/S0022030295766541)) $f''=AI(\theta)$ is computed as:
 
 $$AI(\sigma^2_i,\sigma^2_j) = y'P\frac{\partial V}{\partial\sigma^2_i} P\frac{\partial V}{\partial\sigma^2_j} P y$$
 
@@ -678,7 +680,7 @@ plot(g[-c(1:rX)],g_samp[-c(1:rX)],xlab='u hat',ylab='sample u')
 
 $$\hat{\beta}|\hat{u}=\hat{\sigma}^2_\beta \tilde{Z}'G^{-1}\hat{u}$$
 ```{r,fig.height=4, fig.width=4, fig.align = "center"}
-vb = vu/SumVarSNPs
+vb = vu * alpha
 beta = vb * c( t(Z1) %*% iG %*% u)
 plot(beta)
 ```
