@@ -1,5 +1,5 @@
 ---
-title: "Variance components"
+title: "A brief recap of variance component estimation"
 author: "Alencar Xavier"
 date: "March 2022"
 output: ioslides_presentation
@@ -609,7 +609,7 @@ $$\partial L / \partial\sigma^2_e = \frac{n-r_X}{\sigma^2_e} - \frac{q}{\sigma^2
 
 The $AI(\theta)$ is obtained as follows.
 
-$$M_B = \left[\begin{array}{rr} C  & W'R^{-1}B \\ B'R^{-1}W & B'R^{-1}B A^{-1}  \end{array}\right]$$ 
+$$M_B = \left[\begin{array}{rr} C  & W'R^{-1}B \\ B'R^{-1}W & B'R^{-1}B \end{array}\right]$$ 
 
 $$B = \left[\begin{array}{r} ZAZ'Py & Py  \end{array}\right] = \left[\begin{array}{r} Zu\sigma^{-2}_u & e\sigma^{-2}_e  \end{array}\right] $$
 
