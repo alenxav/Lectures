@@ -53,8 +53,8 @@ output: ioslides_presentation
 - Average-Information
 - Gibbs sampling
 - Marker effects
+- Gauss-Seidel
 - Final remarks
-
 
 
 </div>
@@ -135,13 +135,9 @@ $$Var(e)=R=I\sigma^2_e$$
 
 ## Statistical model
 
-The joint variance, including marker effects $\beta$, is defined as
+The joint variance is defined as
 
-$$Var\left[\begin{array}{r} y \\ u \\ \beta \\ e \end{array}\right] = \left[\begin{array}{rrrr} V  & ZG & Z\tilde{Z}D & R \\ GZ' & G & \tilde{Z}D & 0 \\ D\tilde{Z}'Z' & D\tilde{Z}' & D & 0 \\ R  & 0 & 0 & R \end{array}\right]$$
-
-where $u=\tilde{Z}\beta$, $\beta\sim N(0,D)$, $D=I_m\sigma^2_\beta$, and $G=A'\sigma^2_u=\tilde{Z}D\tilde{Z}'$. The model could be described as:
-
-$$y=Xb+Z(\tilde{Z}\beta)+e$$
+$$Var\left[\begin{array}{r} y \\ u \\ e \end{array}\right] = \left[\begin{array}{rrr} V  & ZG & R \\ GZ' & G &  0 \\ R  & 0 & R \end{array}\right]$$
 
 ## Matrices - Design matrices
 
@@ -161,6 +157,19 @@ rX = ncol(X) # rank of X
 # Check dimensions
 print(c(n=n,q=q,rX=rX))
 ```
+
+## Matrices - Design matrix X
+
+```{r}
+Matrix::image(Matrix::Matrix(X[1:50,]),main='First 50 rows of X')
+```
+
+## Matrices - Design matrix Z
+
+```{r}
+Matrix::image(Matrix::Matrix(Z[1:500,]),main='First 500 rows of Z')
+```
+
 
 ## Matrices - Variance starting values
 
@@ -238,7 +247,7 @@ $$\Sigma= \left[\begin{array}{rr} 0 & 0 \\ 0 & G^{-1}\end{array}\right] $$
 System of equations
 
 ```{r,fig.height=4, fig.width=4, fig.align = "center"}
-Sigma = Matrix::bdiag(diag(0,rX),iG)
+Sigma = as.matrix(Matrix::bdiag(diag(0,rX),iG))
 W = cbind(X,Z)
 C = t(W) %*% iR %*% W + Sigma
 iC = solve(C)
@@ -302,6 +311,21 @@ Also, we'll need $C^{22}$ to estimate variances later
 ```{r,fig.height=4, fig.width=4, fig.align = "center"}
 C22 = as.matrix(iC[-c(1:rX),-c(1:rX)])
 ```
+
+
+## Projection matrices
+
+ The **HAT** matrix projects $y$ into the **parameter-space**:
+
+$$Hy=\hat{y}$$
+
+The **ABSORPTION** matrix projects $y$ into the **null-space**: 
+
+$$Sy=\hat{e}$$
+
+$$\\$$
+
+<font size="4"> **NOTE**: In the least squares model, the $H$ is obtained from the solution of coefficients $\hat{b}=(X'X)^{-1}X'y$, because $X\hat{b}=\hat{y}$, then $H=X(X'X)^{-1}X'$. Thus, the absorption matrix is simply $S=I-H$. </font>
 
 
 ## Projection matrices
@@ -685,15 +709,79 @@ beta = vb * c( t(Z1) %*% iG %*% u)
 plot(beta)
 ```
 
+## Marker effects - Statistical model
+
+The joint variance, including marker effects $\beta$, is defined as
+
+$$Var\left[\begin{array}{r} y \\ u \\ \beta \\ e \end{array}\right] = \left[\begin{array}{rrrr} V  & ZG & Z\tilde{Z}D & R \\ GZ' & G & \tilde{Z}D & 0 \\ D\tilde{Z}'Z' & D\tilde{Z}' & D & 0 \\ R  & 0 & 0 & R \end{array}\right]$$
+
+where $u=\tilde{Z}\beta$, $\beta\sim N(0,D)$, $D=I_m\sigma^2_\beta$, and $G=A'\sigma^2_u=\tilde{Z}D\tilde{Z}'$. The model could be described as:
+
+$$y=Xb+Z(\tilde{Z}\beta)+e$$
+
+## Gauss-Seidel
+
+Gauss-Seidel can bu used in SNP-BLUP models ($y=Xb+e$) to avoid building the system of equations. A common approach ([Legarra and Misztal 2008](https://linkinghub.elsevier.com/retrieve/pii/S0022-0302(08)71471-1)) is to update one effect at a time
+
+$$\hat{b}_j^{t+1}=\frac{ x_j'e^t+x_j'x_j\hat{b}_j^t}{x_j'x_j+\lambda}$$
+with subsequent update of the residuals
+
+$$e^{t+1}=e^t- x_j(\hat{b}_j^{t+1}-\hat{b}_j^{t})$$
+
+Only diagonal component of the LHS are necessary ($x_j'x_j$), and those can be computed beforehand. Convergence faster when updated occur in random order ([Ma et al. 2015](https://epubs.siam.org/doi/abs/10.1137/15M1014425)).
+
+## Gauss-Seidel
+
+```{r}
+# Get some data
+data(tpod, package='NAM')
+y = y-mean(y) # centralize phenotype
+X = NAM::CNT(gen) # centralize markers
+b = rep(0,ncol(X)) # coefficient starting values
+xx = apply(X,2,crossprod) # pre-compute X'X
+lambda = mean(xx) # lambda for h2=0.5
+e = y # starting value of e
+
+# Gauss-Seidel
+for(j in sample(1:ncol(X))){
+  b_old = b[j]
+  b[j] = (c(X[,j]%*%e) +xx[j]*b_old)/(xx[j]+lambda)
+  e = e - X[,j]*(b[j]-b_old)
+}
+```
+
+## Gauss-Seidel
+
+```{r}
+# Check convergence over 10 iterations
+for(i in 1:10){
+  # Store current version of beta
+  b_vec = b
+  # Gauss-Seidel
+  for(j in sample(1:ncol(X))){
+    b_old = b[j]
+    b[j] = (c(X[,j]%*%e) +xx[j]*b_old)/(xx[j]+lambda)
+    e = e - X[,j]*(b[j]-b_old)}
+  # Print log convergence
+  cat(round(log10(crossprod(b_vec-b)[1,1]),2),' ')}
+```
+
+
+## Gauss-Seidel
+
+```{r,fig.height=4, fig.width=8, fig.align = "center"}
+plot(b,xlab='SNP',ylab='Marker effect')
+```
+
 ## Final remarks
 
-- Design matrices ($Z$,$X$) as sparse (*Matrix* pkg)
-- Symmetric matrices ($C$,$C^{-1}$,$A^{-1}$) are store are upper diagonals
-- Implement with good linear algebra libraries (*RcppEigen*, *RcppArmadillo*)
+- Design matrices ($Z$,$X$) are sparse (*Matrix*)
+- Symmetric matrices are store as upper diagonals
+- Use good linear algebra libraries (*RcppEigen*)
 - Same matrices are never computed ($P$,$V$,$R$,$A$)
-- When only traces are needed, only diagonals are computed (e.g., $tr(Z'SZ)$)
-- Absorption can be efficiently done one vector at a time (e.g., $SZ$)
-- Factorization can help in specific situations (SVD, EVD, Cholesky)
+- For trace, only compute diagonals ($tr(Z'SZ)$)
+- Effect absorption can be done one vector at a time ($SZ$)
+- Sometimes factorization can help (SVD, Cholesky)
 
 
 # Thank you

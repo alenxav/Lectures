@@ -166,4 +166,37 @@ vb = vu/SumVarSNPs
 beta = vb * c( t(Z1) %*% iG %*% u)
 plot(beta)
 
+### GAUSS-SEIDEL
+
+# Get some data
+data(tpod, package='NAM')
+y = y-mean(y) # centralize phenotype
+X = NAM::CNT(gen) # centralize markers
+b = rep(0,ncol(X)) # coefficient starting values
+xx = apply(X,2,crossprod) # pre-compute X'X
+lambda = mean(xx) # lambda for h2=0.5
+e = y # starting value of e
+
+# Gauss-Seidel
+for(j in sample(1:ncol(X))){
+  b_old = b[j]
+  b[j] = (c(X[,j]%*%e) +xx[j]*b_old)/(xx[j]+lambda)
+  e = e - X[,j]*(b[j]-b_old)
+}
+
+# Check convergence over 10 iterations
+for(i in 1:10){
+  # Store current version of beta
+  b_vec = b
+  # Gauss-Seidel
+  for(j in sample(1:ncol(X))){
+    b_old = b[j]
+    b[j] = (c(X[,j]%*%e) +xx[j]*b_old)/(xx[j]+lambda)
+    e = e - X[,j]*(b[j]-b_old)}
+  # Print log convergence
+  cat(round(log10(crossprod(b_vec-b)[1,1]),2),' ')
+}
+
+
+plot(b,xlab='SNP',ylab='Marker effect')
 
