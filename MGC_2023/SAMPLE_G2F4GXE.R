@@ -37,10 +37,18 @@ y2 = y2[!is.na(y2)]
 ii = intersect(names(y2),rownames(X))
 uv0 = emDE(scale(y2[ii]),X[ii,])$b
 mean(cor(X[j,] %*% uv0,Y_PS ,use='p'))
-
 # MV on Residuals
 suv0 = c(X[i,] %*% uv0)
 R_ES = apply(Y_ES[i,],2,scale)-suv0
 sem1 = ZSEMF(R_ES,X[i,])$b
 hat = X[j,] %*% (sem1+uv0)
+validation(hat)
+
+# Alternative: UV in both steps
+uv0 = c(MRR3(as.matrix(scale(y2[ii])),X[ii,],TH=T)$b)
+suv0 = c(X[i,] %*% uv0)
+R_ES = apply(Y_ES[i,],2,scale)-suv0
+mean(cor(X[j,] %*% uv0,Y_PS ,use='p'))
+uv1 = FUVBETA(R_ES,X[i,])
+hat = X[j,] %*% (uv0+uv1)
 validation(hat)
